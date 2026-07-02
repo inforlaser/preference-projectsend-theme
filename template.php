@@ -257,45 +257,63 @@ $count = count($my_files);
 
     <main class="mx-auto flex-1 w-full max-w-360 px-4 py-3 sm:px-6 sm:py-4">
         <?php if (!empty($folders)): ?>
-            <details class="mb-6" open>
-                <summary class="flex cursor-pointer list-none items-center justify-between gap-3 rounded-3xl border border-cream-200 bg-white p-5 shadow-sm shadow-cream-200/40">
-                    <h2 class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
-                        <?php _e('Folder Navigation', 'preference_template'); ?>
-                    </h2>
-                    <span class="rounded-full bg-cream-100 px-3 py-1 text-xs font-medium text-slate-500">
-                        <?php echo count($folders); ?> <?php _e('folders', 'preference_template'); ?>
-                    </span>
-                </summary>
-                <div class="mt-3 rounded-3xl border border-cream-200 bg-white p-5 shadow-sm shadow-cream-200/40">
-                    <div class="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-                        <?php
-                        sort($folders);
-                        foreach ($folders as $folder_data):
-                            $folder = new \ProjectSend\Classes\Folder($folder_data['id']);
-                            $folder_data = $folder->getData();
-                            $link = modify_url_with_parameters($current_url, ['folder_id' => $folder_data['id']], ['folder_id']); ?>
-                            <a href="<?php echo $link; ?>"
-                                class="group flex w-full min-w-0 items-start gap-3 rounded-2xl border border-cream-200 bg-cream-50/70 p-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-brand/30 hover:bg-white hover:shadow-md">
-                                <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white text-brand shadow-sm ring-1 ring-cream-200 group-hover:bg-brand group-hover:text-white">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.6"
-                                        stroke="currentColor" class="h-5 w-5">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" />
-                                    </svg>
-                                </div>
-                                <div class="min-w-0 flex-1">
-                                    <div class="line-clamp-2 break-words text-sm font-semibold leading-snug text-slate-700 group-hover:text-brand sm:line-clamp-1">
-                                        <?php echo html_output($folder->name); ?>
+            <div class="mb-6 folder-accordion rounded-3xl border border-cream-200 bg-white shadow-sm shadow-cream-200/40"
+                id="folder-accordion"
+                data-collapse-text="<?php echo _e('Collapse', 'preference_template'); ?>"
+                data-expand-text="<?php echo _e('Expand', 'preference_template'); ?>">
+
+                <button type="button"
+                    class="folder-accordion-header w-full flex cursor-pointer items-center justify-between gap-3 p-5 text-left transition-colors hover:bg-cream-50 rounded-3xl"
+                    aria-expanded="true" aria-controls="folder-accordion-content">
+                    <div class="flex items-center gap-3">
+                        <h2 class="text-sm font-semibold text-slate-500">
+                            <?php _e('Folder Navigation', 'preference_template'); ?>
+                        </h2>
+                        <span class="rounded-full bg-cream-100 px-3 py-1 text-xs font-medium text-slate-500">
+                            <?php echo count($folders); ?> <?php _e('folders', 'preference_template'); ?>
+                        </span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="folder-accordion-toggle-text text-xs font-medium text-slate-500"><?php _e('Collapse', 'preference_template'); ?></span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                            class="folder-accordion-caret h-4 w-4 text-slate-400 transition-transform duration-200 rotate-180">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                        </svg>
+                    </div>
+                </button>
+
+                <div id="folder-accordion-content" class="folder-accordion-content overflow-hidden transition-all duration-300 border-t border-cream-200">
+                    <div class="p-5">
+                        <div class="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+                            <?php
+                            sort($folders);
+                            foreach ($folders as $folder_data):
+                                $folder = new \ProjectSend\Classes\Folder($folder_data['id']);
+                                $folder_data = $folder->getData();
+                                $link = modify_url_with_parameters($current_url, ['folder_id' => $folder_data['id']], ['folder_id']); ?>
+                                <a href="<?php echo $link; ?>"
+                                    class="group flex w-full min-w-0 items-start gap-3 rounded-2xl border border-cream-200 bg-cream-50/70 p-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-brand/30 hover:bg-white hover:shadow-md">
+                                    <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white text-brand shadow-sm ring-1 ring-cream-200 group-hover:bg-brand group-hover:text-white">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.6"
+                                            stroke="currentColor" class="h-5 w-5">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" />
+                                        </svg>
                                     </div>
-                                    <div class="mt-1 text-xs text-slate-400">
-                                        <?php _e('Open folder', 'preference_template'); ?>
+                                    <div class="min-w-0 flex-1">
+                                        <div class="line-clamp-2 break-words text-sm font-semibold leading-snug text-slate-700 group-hover:text-brand sm:line-clamp-1">
+                                            <?php echo html_output($folder->name); ?>
+                                        </div>
+                                        <div class="mt-1 text-xs text-slate-400">
+                                            <?php _e('Open folder', 'preference_template'); ?>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                        <?php endforeach; ?>
+                                </a>
+                            <?php endforeach; ?>
+                        </div>
                     </div>
                 </div>
-            </details>
+            </div>
         <?php endif; ?>
 
         <!-- Search and Filters -->
@@ -475,7 +493,7 @@ $count = count($my_files);
             <!-- Pagination -->
             <?php if (TEMPLATE_RESULTS_PER_PAGE > 0 && $count_for_pagination > TEMPLATE_RESULTS_PER_PAGE) { ?>
                 <div class="mt-8 flex items-center justify-center">
-                    <nav class="flex items-center gap-2" aria-label="<?php echo __('Pagination', 'preference_template'); ?>">
+                    <nav class="flex items-center gap-2" aria-label="<?php echo _e('Pagination', 'preference_template'); ?>">
                         <?php
                         $pagination_page = (isset($_GET["page"]) && is_numeric($_GET["page"])) ? $_GET["page"] : 1;
                         $pages = ceil($count_for_pagination / TEMPLATE_RESULTS_PER_PAGE);
@@ -565,6 +583,10 @@ $count = count($my_files);
 
     <script>
         window.csrf_token = '<?php echo $csrf_token; ?>';
+        window.folderAccordionTexts = {
+            collapse: '<?php echo _e('Collapse', 'preference_template'); ?>',
+            expand: '<?php echo _e('Expand', 'preference_template'); ?>'
+        };
     </script>
 </body>
 

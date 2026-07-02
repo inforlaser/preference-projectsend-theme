@@ -1,6 +1,39 @@
 document.addEventListener('DOMContentLoaded', function () {
+    /* ---- Folder Accordion ---- */
+    const folderAccordion = document.getElementById('folder-accordion');
+    if (folderAccordion) {
+        const header = folderAccordion.querySelector('.folder-accordion-header');
+        const content = folderAccordion.querySelector('.folder-accordion-content');
+        const toggleText = folderAccordion.querySelector('.folder-accordion-toggle-text');
+        const caret = folderAccordion.querySelector('.folder-accordion-caret');
+        const collapseText = folderAccordion.dataset.collapseText || 'Collapse';
+        const expandText = folderAccordion.dataset.expandText || 'Expand';
+
+        // Set initial max-height based on actual content
+        content.style.maxHeight = content.scrollHeight + 'px';
+
+        header.addEventListener('click', function () {
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+
+            if (isExpanded) {
+                this.setAttribute('aria-expanded', 'false');
+                content.style.maxHeight = '0px';
+                content.classList.remove('border-t');
+                if (toggleText) toggleText.textContent = expandText;
+                if (caret) caret.classList.remove('rotate-180');
+            } else {
+                this.setAttribute('aria-expanded', 'true');
+                content.style.maxHeight = content.scrollHeight + 'px';
+                content.classList.add('border-t');
+                if (toggleText) toggleText.textContent = collapseText;
+                if (caret) caret.classList.add('rotate-180');
+            }
+        });
+    }
+
     const zipBtn = document.getElementById('zip_download');
     const selectAll = document.getElementById('select-all');
+
 
     function getCheckboxes() {
         return Array.from(document.querySelectorAll('.file-checkbox'));
@@ -209,4 +242,3 @@ document.addEventListener('DOMContentLoaded', function () {
     updateSelectAllState();
     updateCardSelectionState();
 });
-
