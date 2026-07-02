@@ -91,14 +91,11 @@ define('TEMPLATE_THUMBNAILS_HEIGHT', '300');
 
 		<div id="header">
             <div class="header_inner">
-                <div id="branding" class="branding_lockup">
+                <a id="branding" class="branding_lockup" href="<?php echo BASE_URI; ?>" >
                     <?php if ($logo_file_info && $logo_file_info['exists']) { ?>
                         <img class="brand_logo" src="<?php echo $logo_file_info['url']; ?>" alt="<?php echo html_output($site_title); ?>">
                     <?php } ?>
-                    <div class="brand_text">
-                        <span class="brand_title"><?php echo html_output($site_title); ?></span>
-                    </div>
-                </div>
+                </a>
             </div>
 		</div>
 

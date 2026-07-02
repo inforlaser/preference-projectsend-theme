@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Projectsend theme: PinBoxes\n"
+"Project-Id-Version: Projectsend theme: Preference\n"
 "POT-Creation-Date: 2020-10-30 18:41-0300\n"
 "PO-Revision-Date: 2020-10-30 18:41-0300\n"
 "Last-Translator: \n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-1: js\n"
 
 #: template.php:20
-msgid "Available files"
+msgid "Available fileses"
 msgstr ""
 
 #: template.php:58
@@ -72,3 +72,27 @@ msgstr ""
 #: template.php:202
 msgid "File expired"
 msgstr ""
+
+#: template.php:381
+msgid "Select all files"
+msgstr "Select all files"
+
+#: template.php:382
+msgid "Select all"
+msgstr "Select all"
+
+#: template.php:385
+msgid "Choose files to include in the zip download."
+msgstr "Choose files to include in the zip download."
+
+#: template.php:390
+msgid "Download zipped"
+msgstr "Download zipped"
+
+#: template.php:443
+msgid "Select file"
+msgstr "Select file"
+
+#: template.php:567
+msgid "Repository access"
+msgstr "Repository access"

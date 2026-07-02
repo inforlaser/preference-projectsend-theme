@@ -1,209 +1,212 @@
-$(document).ready(function() {
-    var $container = $('.photo_list');
-    var zipDownloadInProgress = false;
-    $container.imagesLoaded(function() {
-        $container.addClass('is-ready');
-    });
+document.addEventListener('DOMContentLoaded', function () {
+    const zipBtn = document.getElementById('zip_download');
+    const selectAll = document.getElementById('select-all');
 
-    function updateZipButtonState() {
-        var amountChecked = $('.checkbox_file:checked').length;
-        var $zipButton = $('#zip_download');
-
-        if (zipDownloadInProgress) {
-            return;
-        }
-
-        $zipButton.find('.floating_zip_action_count').text(amountChecked);
-        $zipButton.find('.floating_zip_action_label').text(
-            'Download ' + amountChecked + ' Selected Files as Zip'
-        );
-
-        if (amountChecked > 0) {
-            $zipButton.removeClass('disabled').addClass('is-visible').attr('aria-hidden', 'false');
-        } else {
-            $zipButton.addClass('disabled').removeClass('is-visible').attr('aria-hidden', 'true');
-        }
+    function getCheckboxes() {
+        return Array.from(document.querySelectorAll('.file-checkbox'));
     }
 
-    function setZipButtonLoading(isLoading) {
-        var $zipButton = $('#zip_download');
-        zipDownloadInProgress = isLoading;
+    function anyChecked() {
+        return getCheckboxes().some(cb => cb.checked === true);
+    }
 
-        if (isLoading) {
-            $zipButton
-                .addClass('is-loading is-visible disabled')
-                .attr('aria-hidden', 'false')
-                .attr('aria-busy', 'true');
-            $zipButton.find('.floating_zip_action_label').text('Preparing Selected Files as Zip');
+    function updateZipButton() {
+        if (!zipBtn) return;
+        if (anyChecked()) {
+            zipBtn.classList.remove('disabled');
+            zipBtn.removeAttribute('aria-disabled');
         } else {
-            $zipButton.removeClass('is-loading').attr('aria-busy', 'false');
-            updateZipButtonState();
+            zipBtn.classList.add('disabled');
+            zipBtn.setAttribute('aria-disabled', 'true');
         }
     }
 
     function updateSelectAllState() {
-        var $selectAll = $('#select_all_files');
-        var totalFiles = $('.checkbox_file').length;
-        var checkedFiles = $('.checkbox_file:checked').length;
-
-        if ($selectAll.length === 0) {
-            return;
-        }
-
-        $selectAll.prop('checked', totalFiles > 0 && checkedFiles === totalFiles);
-        $selectAll.prop('indeterminate', checkedFiles > 0 && checkedFiles < totalFiles);
+        if (!selectAll) return;
+        const checkboxes = getCheckboxes();
+        const checkedCount = checkboxes.filter(cb => cb.checked).length;
+        selectAll.checked = checkboxes.length > 0 && checkedCount === checkboxes.length;
     }
 
-    function updateZipButtonScrollState() {
-        $('#zip_download').toggleClass('is-scrolled', $(window).scrollTop() > 24);
+    function updateCardSelectionState() {
+        document.querySelectorAll('.file-card').forEach(card => {
+            const checkbox = card.querySelector('.file-checkbox');
+            card.classList.toggle('is-selected', checkbox && checkbox.checked);
+        });
     }
 
-    function updateCardSelectionState($checkbox) {
-        $checkbox.closest('.photo').toggleClass('selected', $checkbox.prop('checked'));
-    }
-
-    $('.button').click(function() {
-        $(this).blur();
-    });
-
-    function closeMenuOverlays() {
-        $('.menu_dropdown_panel').removeClass('visible').stop().slideUp(150);
-        $('.menu_dropdown_trigger').removeClass('is-open').find('button, a').attr('aria-expanded', 'false');
-        $('.topbar_menu').removeClass('is-open');
-        $('#topbar_toggle').attr('aria-expanded', 'false');
-        $('.content_cover').stop().fadeOut(200);
-    }
-
-    function syncMenuOverlayState() {
-        var mobileMenuOpen = $('.topbar_menu').hasClass('is-open') && $(window).width() <= 1024;
-
-        if (mobileMenuOpen) {
-            $('.content_cover').stop().fadeIn(200);
-        } else {
-            $('.content_cover').stop().fadeOut(200);
-        }
-    }
-
-    $('.menu_dropdown_trigger > a, .menu_dropdown_trigger > button').on('click', function(e) {
-        e.preventDefault();
-
-        var $trigger = $(this).closest('.menu_dropdown_trigger');
-        var $panel = $trigger.find('.menu_dropdown_panel').first();
-        var isOpen = $panel.hasClass('visible');
-
-        $('.menu_dropdown_panel').not($panel).removeClass('visible').stop().slideUp(150);
-        $('.menu_dropdown_trigger').not($trigger).removeClass('is-open').find('button, a').attr('aria-expanded', 'false');
-
-        if (isOpen) {
-            $panel.removeClass('visible').stop().slideUp(150);
-            $trigger.removeClass('is-open');
-            $(this).attr('aria-expanded', 'false');
-        } else {
-            $panel.addClass('visible').stop().slideDown(150);
-            $trigger.addClass('is-open');
-            $(this).attr('aria-expanded', 'true');
-        }
-
-        syncMenuOverlayState();
-    });
-
-    $('#topbar_toggle').on('click', function() {
-        var $menu = $('.topbar_menu');
-        var isOpen = $menu.hasClass('is-open');
-
-        $menu.toggleClass('is-open', !isOpen);
-        $(this).attr('aria-expanded', isOpen ? 'false' : 'true');
-        syncMenuOverlayState();
-    });
-
-    $('.content_cover').click(function() {
-        closeMenuOverlays();
-    });
-
-    $(document).on('click', function(e) {
-        if ($(e.target).closest('.menu_dropdown_trigger, #topbar_toggle, .topbar_menu').length === 0) {
-            closeMenuOverlays();
-        }
-    });
-
-    $(window).on('resize', function() {
-        if ($(window).width() > 1024) {
-            $('.topbar_menu').removeClass('is-open');
-            $('#topbar_toggle').attr('aria-expanded', 'false');
-            syncMenuOverlayState();
-        }
-    });
-
-    $('a.disabled').on('click', function(e) {
-        e.preventDefault();
-    });
-
-    $container.on('click', '.photo.selectable', function(e) {
-        if ($(e.target).closest('a, button, input, label, .checkbox').length) {
-            return;
-        }
-
-        var $checkbox = $(this).find('.checkbox_file').first();
-        if ($checkbox.length === 0 || $checkbox.is(':disabled')) {
-            return;
-        }
-
-        $checkbox.prop('checked', !$checkbox.prop('checked')).trigger('change');
-    });
-
-    $('.checkbox_file').on('change', function() {
-        updateCardSelectionState($(this));
-        updateZipButtonState();
+    function toggleAll(checked) {
+        getCheckboxes().forEach(cb => {
+            cb.checked = checked;
+        });
+        updateZipButton();
         updateSelectAllState();
-    });
+        updateCardSelectionState();
+    }
 
-    $('#select_all_files').on('change', function() {
-        var shouldCheck = $(this).prop('checked');
+    function formatBytes(bytes) {
+        if (bytes === 0) return '0 B';
+        const units = ['B', 'KB', 'MB', 'GB', 'TB'];
+        const exponent = Math.floor(Math.log(bytes) / Math.log(1024));
+        return (bytes / Math.pow(1024, exponent)).toFixed(1).replace(/\.0$/, '') + ' ' + units[exponent];
+    }
 
-        $('.checkbox_file').each(function() {
-            $(this).prop('checked', shouldCheck).trigger('change');
+    function setCookie(name, value, days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        document.cookie = `${name}=${encodeURIComponent(value)};expires=${date.toUTCString()};path=/`;
+    }
+
+    function getCookie(name) {
+        const nameEQ = `${name}=`;
+        const ca = document.cookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i].trim();
+            if (c.indexOf(nameEQ) === 0) {
+                return decodeURIComponent(c.substring(nameEQ.length));
+            }
+        }
+        return null;
+    }
+
+    function getSelectedFiles() {
+        const checkboxes = getCheckboxes().filter(cb => cb.checked);
+        const ids = checkboxes.map(cb => cb.value);
+        const totalSize = checkboxes.reduce((sum, cb) => sum + Number(cb.dataset.size || 0), 0);
+        return { ids, count: checkboxes.length, totalSize };
+    }
+
+    function estimateZipTimeMs(totalBytes) {
+        if (totalBytes <= 0) {
+            return 25000;
+        }
+        const bytesPerSecond = 20 * 1024 * 1024; // 20 MB/s server-side estimate
+        return Math.max(25000, Math.round((totalBytes / bytesPerSecond) * 1000));
+    }
+
+    function showDownloadOverlay(fileCount, totalSize, estimatedMs) {
+        if (document.getElementById('ps-download-overlay')) return;
+        const overlay = document.createElement('div');
+        overlay.id = 'ps-download-overlay';
+        overlay.style.position = 'fixed';
+        overlay.style.inset = '0';
+        overlay.style.background = 'rgba(0,0,0,0.35)';
+        overlay.style.display = 'flex';
+        overlay.style.alignItems = 'center';
+        overlay.style.justifyContent = 'center';
+        overlay.style.zIndex = '9999';
+        overlay.innerHTML = `
+            <div style="max-width:320px;padding:20px 24px;background:#fff;border-radius:12px;text-align:center;color:#111;line-height:1.5;">
+                <div style="font-weight:700;margin-bottom:10px;">Preparing download…</div>
+                <div style="font-size:0.95rem;color:#4b5563;">
+                    Selected ${fileCount} file${fileCount === 1 ? '' : 's'} totaling ${formatBytes(totalSize)}.
+                </div>
+                <div style="margin-top:10px;font-size:0.9rem;color:#6b7280;">
+                    This may take up to ${Math.ceil(estimatedMs / 60000)} minute${Math.ceil(estimatedMs / 60000) === 1 ? '' : 's'}.
+                </div>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+    }
+
+    function hideDownloadOverlay() {
+        const overlay = document.getElementById('ps-download-overlay');
+        if (overlay && overlay.parentNode) {
+            overlay.parentNode.removeChild(overlay);
+        }
+    }
+
+    function handleZipDownload(event) {
+        event.preventDefault();
+        if (!zipBtn || zipBtn.classList.contains('disabled')) return;
+
+        const selected = getSelectedFiles();
+        if (selected.ids.length === 0) return;
+
+        const estimatedMs = estimateZipTimeMs(selected.totalSize);
+        showDownloadOverlay(selected.count, selected.totalSize, estimatedMs);
+        setCookie('download_started', 0, 100);
+
+        const iframe = document.createElement('iframe');
+        iframe.id = 'ps-download-iframe';
+        iframe.style.display = 'none';
+        iframe.src = base_url + 'process.php?do=download_zip&files=' + encodeURIComponent(selected.ids.join(','));
+        document.body.appendChild(iframe);
+
+        let downloadCheckerTimer = null;
+        const downloadChecker = function () {
+            if (getCookie('download_started') == 1) {
+                setCookie('download_started', 'false', 100);
+                hideDownloadOverlay();
+                if (iframe && iframe.parentNode) iframe.parentNode.removeChild(iframe);
+                if (downloadCheckerTimer) {
+                    clearTimeout(downloadCheckerTimer);
+                }
+                return;
+            }
+
+            downloadCheckerTimer = setTimeout(downloadChecker, 1000);
+        };
+
+        downloadCheckerTimer = setTimeout(downloadChecker, 1000);
+        setTimeout(function () {
+            clearTimeout(downloadCheckerTimer);
+            hideDownloadOverlay();
+            if (iframe && iframe.parentNode) iframe.parentNode.removeChild(iframe);
+        }, Math.min(Math.max(Math.round(estimatedMs * 1.5), 25000), 300000));
+    }
+
+    if (selectAll) {
+        selectAll.addEventListener('change', function () {
+            toggleAll(this.checked);
         });
+    }
+
+    document.addEventListener('change', function (e) {
+        if (e.target && e.target.classList && e.target.classList.contains('file-checkbox')) {
+            updateZipButton();
+            updateSelectAllState();
+            updateCardSelectionState();
+        }
     });
 
-    $('.checkbox_file').each(function() {
-        updateCardSelectionState($(this));
-    });
+    document.addEventListener('click', function (e) {
+        const card = e.target.closest('.file-card');
+        if (!card) return;
 
-    updateZipButtonState();
-    updateSelectAllState();
-    updateZipButtonScrollState();
+        if (e.target.closest('.file-checkbox') || e.target.closest('.download-action')) return;
 
-    $(window).on('scroll', updateZipButtonScrollState);
+        const checkbox = card.querySelector('.file-checkbox');
+        if (!checkbox) return;
 
-    $('#zip_download').on('click', function(e) {
         e.preventDefault();
-
-        if ($(this).hasClass('disabled') || zipDownloadInProgress) {
-            return;
-        }
-
-        var ids = [];
-        $('.checkbox_file:checked').each(function () {
-            ids.push($(this).val());
-        });
-
-        setZipButtonLoading(true);
-        Cookies.set('download_started', 0, { expires: 100 });
-        setTimeout(check_download_cookie, 1000);
-
-        var url = base_url+'process.php?do=download_zip&files='+ids.toString();
-        $('body').append("<iframe id='modal_zip'></iframe>");
-        $('#modal_zip').attr('src', url);
+        checkbox.checked = !checkbox.checked;
+        checkbox.dispatchEvent(new Event('change', { bubbles: true }));
+        updateZipButton();
+        updateSelectAllState();
+        updateCardSelectionState();
     });
 
-    var downloadTimeout;
-    var check_download_cookie = function() {
-        if (Cookies.get("download_started") == 1) {
-            Cookies.set("download_started", "false", { expires: 100 });
-            setZipButtonLoading(false);
-            $('#modal_zip').remove();
-        } else {
-            downloadTimeout = setTimeout(check_download_cookie, 1000);
-        }
-    };
+    document.addEventListener('keydown', function (e) {
+        const card = e.target.closest('.file-card');
+        if (!card || (e.key !== 'Enter' && e.key !== ' ')) return;
+        if (e.target.closest('.download-action') || e.target.closest('.file-checkbox')) return;
+        e.preventDefault();
+        const checkbox = card.querySelector('.file-checkbox');
+        if (!checkbox) return;
+        checkbox.checked = !checkbox.checked;
+        checkbox.dispatchEvent(new Event('change', { bubbles: true }));
+        updateZipButton();
+        updateSelectAllState();
+        updateCardSelectionState();
+    });
+
+    if (zipBtn) {
+        zipBtn.addEventListener('click', handleZipDownload);
+    }
+
+    updateZipButton();
+    updateSelectAllState();
+    updateCardSelectionState();
 });
+

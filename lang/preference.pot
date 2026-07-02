@@ -73,3 +73,27 @@ msgstr ""
 #: template.php:202
 msgid "File expired"
 msgstr ""
+
+#: template.php:381
+msgid "Select all files"
+msgstr ""
+
+#: template.php:382
+msgid "Select all"
+msgstr ""
+
+#: template.php:385
+msgid "Choose files to include in the zip download."
+msgstr ""
+
+#: template.php:390
+msgid "Download zipped"
+msgstr ""
+
+#: template.php:443
+msgid "Select file"
+msgstr ""
+
+#: template.php:567
+msgid "Repository access"
+msgstr ""

@@ -1,0 +1,30 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Projectsend theme: Preference\n"
+"POT-Creation-Date: 2020-10-30 18:41-0300\n"
+"PO-Revision-Date: 2026-07-01 00:00+0000\n"
+"Last-Translator: ProjectSend\n"
+"Language-Team: ProjectSend <contact@projectsend.org>\n"
+"Language: pt_PT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Select all files"
+msgstr "Selecionar todos os ficheiros"
+
+msgid "Select all"
+msgstr "Selecionar tudo"
+
+msgid "Choose files to include in the zip download."
+msgstr "Escolha os ficheiros para incluir na transferência zip."
+
+msgid "Download zipped"
+msgstr "Descarregar em zip"
+
+msgid "Select file"
+msgstr "Selecionar ficheiro"
+
+msgid "Repository access"
+msgstr "Acesso ao repositório"
