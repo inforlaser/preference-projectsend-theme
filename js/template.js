@@ -34,6 +34,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const zipBtn = document.getElementById('zip_download');
     const selectAll = document.getElementById('select-all');
 
+    updateSelectionSummary();
+
 
     function getCheckboxes() {
         return Array.from(document.querySelectorAll('.file-checkbox'));
@@ -68,6 +70,18 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    function updateSelectionSummary() {
+        const summary = document.getElementById('selection-summary');
+        if (!summary) return;
+
+        const total = getCheckboxes().length;
+        const checked = getCheckboxes().filter(cb => cb.checked).length;
+        const template = summary.dataset.textTemplate || '%s of %s items selected for download.';
+
+        let text = template.replace('%s', checked).replace('%s', total);
+        summary.textContent = text;
+    }
+
     function toggleAll(checked) {
         getCheckboxes().forEach(cb => {
             cb.checked = checked;
@@ -75,6 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
         updateZipButton();
         updateSelectAllState();
         updateCardSelectionState();
+        updateSelectionSummary();
     }
 
     function formatBytes(bytes) {
@@ -200,6 +215,7 @@ document.addEventListener('DOMContentLoaded', function () {
             updateZipButton();
             updateSelectAllState();
             updateCardSelectionState();
+            updateSelectionSummary();
         }
     });
 

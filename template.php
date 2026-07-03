@@ -396,7 +396,7 @@ $count = count($my_files);
                 </label>
             </div>
             <div class="flex flex-wrap items-center gap-3">
-                <span id="selection-summary" class="text-xs text-slate-400 sm:mr-1" data-total="<?php echo count($available_files ?? []); ?>">0 of <?php echo count($available_files ?? []); ?> items selected for download.</span>
+                <span id="selection-summary" class="text-xs text-slate-400 sm:mr-1" data-total="<?php echo count($available_files ?? []); ?>" data-text-template="<?php echo html_output(__('%s of %s items selected for download.', 'preference_template')); ?>"><?php echo sprintf(__('%s of %s items selected for download.', 'preference_template'), '0', count($available_files ?? [])); ?></span>
                 <a href="#" id="zip_download" class="zip-button inline-flex items-center gap-2 rounded-lg border border-cream-200 bg-white px-4 py-2 text-slate-700 transition disabled:pointer-events-none disabled:opacity-50">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4">
                         <path fill-rule="evenodd" d="M12 2.25a.75.75 0 0 1 .75.75v11.69l3.22-3.22a.75.75 0 1 1 1.06 1.06l-4.5 4.5a.75.75 0 0 1-1.06 0l-4.5-4.5a.75.75 0 1 1 1.06-1.06l3.22 3.22V3a.75.75 0 0 1 .75-.75Zm-9 13.5a.75.75 0 0 1 .75.75v3.75a3 3 0 0 0 3 3h13.5a3 3 0 0 0 3-3V16.5a.75.75 0 0 1 1.5 0v3.75a4.5 4.5 0 0 1-4.5 4.5H6.75a4.5 4.5 0 0 1-4.5-4.5V16.5a.75.75 0 0 1 .75-.75Z" clip-rule="evenodd" />
@@ -551,19 +551,22 @@ $count = count($my_files);
             <!-- No Files Message -->
             <div class="no-files-state flex flex-col items-center justify-center py-20 rounded-3xl">
                 <div class="w-20 h-20 bg-cream-100 rounded-full flex items-center justify-center mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-10 h-10 text-gray-300">
-                        <path fill-rule="evenodd" d="M19.5 22.5a7.5 7.5 0 0 0 7.5-7.5v-9a7.5 7.5 0 0 0-7.5-7.5h-9A7.5 7.5 0 0 0 3 6v9a7.5 7.5 0 0 0 7.5 7.5h9Z" />
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 0 0 5.636 5.636m12.728 12.728A9 9 0 0 1 5.636 5.636m12.728 12.728L5.636 5.636" />
                     </svg>
                 </div>
-                <h3 class="text-lg font-medium text-gray-400 mb-1"><?php echo _e('No files found', 'preference_template'); ?></h3>
-                <p class="text-sm text-gray-300"><?php echo _e('There are no files matching your criteria.', 'preference_template'); ?></p>
                 <?php $search_query = isset($_GET['search']) ? trim((string) $_GET['search']) : ''; ?>
                 <?php if ($search_query !== '') { ?>
+                    <h3 class="text-lg font-medium text-gray-400 mb-1"><?php echo _e('No files found', 'preference_template'); ?></h3>
+                    <p class="text-sm text-gray-300"><?php echo _e('There are no files matching your criteria.', 'preference_template'); ?></p>
                     <a href="<?php echo modify_url_with_parameters($current_url, [], ['search', 'page']); ?>"
                        class="mt-4 px-6 py-2.5 bg-brand hover:bg-brand-dark text-white text-sm font-medium rounded-full transition-colors">
                         <?php echo _e('Clear search', 'preference_template'); ?>
                     </a>
-                <?php } ?>
+                <?php } else { ?>
+                    <h3 class="text-lg font-medium text-gray-400 mb-1"><?php echo _e('No files found', 'preference_template'); ?></h3>
+                    <p class="text-sm text-gray-300"><?php echo _e('There are no files in this folder assigned to you.', 'preference_template'); ?></p>
+                <?php }; ?>
             </div>
         <?php } ?>
 
