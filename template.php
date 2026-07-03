@@ -2,7 +2,7 @@
 /*
 Template name: Preference
 URI: 
-Author: Nuno Fernandes - Highly based on Pinboxes template by ProjectSend
+Author: Nuno Fernandes
 Author URI: https://inforlaser.pt
 Author e-mail: nunofernandes@inforlaser.pt
 Description: Custom theme for Preference Porto.
@@ -53,6 +53,9 @@ $count = count($my_files);
 
     <!-- Tailwind Elements JS -->
     <script type="module" src="<?php echo $this_template_url; ?>js/tailwindplus-elements.js"></script>
+
+    <!-- Flags CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.3.2/css/flag-icons.min.css" />
 
     <!-- Custom theme CSS -->
     <link rel="stylesheet" media="all" type="text/css" href="<?php echo $this_template_url; ?>preference.min.css" />
@@ -109,11 +112,34 @@ $count = count($my_files);
                             // Scan for language files
                             $available_langs = get_available_languages();
                             $return_to = make_return_to_url($_SERVER['REQUEST_URI'], true);
+
+                            // Flag icons and localized names mapping
+                            $lang_flags = array(
+                                'en' => array(
+                                    'flag' => '<span class="fi fi-gb"></span>',
+                                    'name' => 'English'
+                                ),
+                                'pt' => array(
+                                    'flag' => '<span class="fi fi-pt"></span>',
+                                    'name' => 'Português'
+                                )
+                            );
+
                             foreach ($available_langs as $filename => $lang_name) {
+                                // Extract language code (e.g., 'en' from 'en.php' or 'en_US')
+                                $lang_code = substr($filename, 0, 2);
+                                $flag = '';
+                                $display_name = $lang_name;
+
+                                if (isset($lang_flags[$lang_code])) {
+                                    $flag = $lang_flags[$lang_code]['flag'];
+                                    $display_name = $lang_flags[$lang_code]['name'];
+                                }
                                 ?>
                                 <a href="<?php echo BASE_URI . 'process.php?do=change_language&language=' . $filename . '&return_to=' . $return_to; ?>"
                                     class="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-600 hover:bg-cream-50 hover:text-brand transition-colors">
-                                    <?php echo $lang_name; ?>
+                                    <?php echo $flag; ?>
+                                    <?php echo $display_name; ?>
                                 </a>
                                 <?php
                             }
