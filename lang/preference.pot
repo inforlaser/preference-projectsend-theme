@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Projectsend theme: Preference\n"
-"POT-Creation-Date: 2026-07-02 18:21+0100\n"
+"POT-Creation-Date: 2026-07-03 18:27+0100\n"
 "PO-Revision-Date: 2016-09-14 15:51-0300\n"
 "Last-Translator: \n"
 "Language-Team: ProjectSend <contact@projectsend.org>\n"
@@ -66,7 +66,7 @@ msgstr ""
 msgid "Expiration date"
 msgstr ""
 
-#: public-download.php:228 public.php:206 template.php:485
+#: public-download.php:228 public.php:206 template.php:511
 msgid "Download"
 msgstr ""
 
@@ -126,94 +126,103 @@ msgstr ""
 msgid "File expired"
 msgstr ""
 
-#: template.php:96
+#: template.php:99
 msgid "Language"
 msgstr ""
 
-#: template.php:148
+#: template.php:174
 msgid "Signed in as"
 msgstr ""
 
-#: template.php:161
+#: template.php:187
 msgid "My Account"
 msgstr ""
 
-#: template.php:171
+#: template.php:197
 msgid "Logout"
 msgstr ""
 
-#: template.php:219
+#: template.php:245
 msgid "Root Folder"
 msgstr ""
 
-#: template.php:262 template.php:277 template.php:587
+#: template.php:288 template.php:303 template.php:616
 msgid "Collapse"
 msgstr ""
 
-#: template.php:263 template.php:588
+#: template.php:289 template.php:617
 msgid "Expand"
 msgstr ""
 
-#: template.php:270
+#: template.php:296
 msgid "Folder Navigation"
 msgstr ""
 
-#: template.php:273
+#: template.php:299
 msgid "folders"
 msgstr ""
 
-#: template.php:308
+#: template.php:334
 msgid "Open folder"
 msgstr ""
 
-#: template.php:343
+#: template.php:369
 msgid "Search files..."
 msgstr ""
 
-#: template.php:353
+#: template.php:379
 msgid "All Categories"
 msgstr ""
 
-#: template.php:371
+#: template.php:397
 msgid "per page"
 msgstr ""
 
-#: template.php:383
+#: template.php:409
 msgid "Apply"
 msgstr ""
 
-#: template.php:394
+#: template.php:420
 msgid "Select all files"
 msgstr ""
 
-#: template.php:395
+#: template.php:421
 msgid "Select all"
 msgstr ""
 
-#: template.php:404
+#: template.php:425
+#, php-format
+msgid "%s of %s items selected for download."
+msgstr ""
+
+#: template.php:430
 msgid "Download zipped"
 msgstr ""
 
-#: template.php:456
+#: template.php:482
 msgid "Select file"
 msgstr ""
 
-#: template.php:464
+#: template.php:490
 msgid "Expired"
 msgstr ""
 
-#: template.php:496
+#: template.php:522
 msgid "Pagination"
 msgstr ""
 
-#: template.php:558
+#: template.php:586 template.php:593
 msgid "No files found"
 msgstr ""
 
-#: template.php:559
+#: template.php:587
 msgid "There are no files matching your criteria."
 msgstr ""
 
-#: template.php:564
+#: template.php:590
 msgid "Clear search"
+msgstr ""
+
+#: template.php:594
+msgid "There are no files in this folder assigned to you."
 msgstr ""

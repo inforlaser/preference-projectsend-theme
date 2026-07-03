@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Projectsend theme: Preference\n"
-"POT-Creation-Date: 2026-07-02 18:09+0100\n"
-"PO-Revision-Date: 2026-07-02 18:19+0100\n"
+"POT-Creation-Date: 2026-07-03 18:27+0100\n"
+"PO-Revision-Date: 2026-07-03 18:29+0100\n"
 "Last-Translator: \n"
 "Language-Team: ProjectSend <contact@projectsend.org>\n"
 "Language: pt_PT\n"
@@ -66,7 +66,7 @@ msgstr "Dimensões"
 msgid "Expiration date"
 msgstr "Data de Expiração"
 
-#: public-download.php:228 public.php:206 template.php:485
+#: public-download.php:228 public.php:206 template.php:511
 msgid "Download"
 msgstr "Descarregar"
 
@@ -126,94 +126,103 @@ msgstr "Ver"
 msgid "File expired"
 msgstr "Ficheiro expirado"
 
-#: template.php:96
+#: template.php:99
 msgid "Language"
 msgstr "Linguagem"
 
-#: template.php:148
+#: template.php:174
 msgid "Signed in as"
 msgstr "Ligado como"
 
-#: template.php:161
+#: template.php:187
 msgid "My Account"
 msgstr "Minha conta"
 
-#: template.php:171
+#: template.php:197
 msgid "Logout"
 msgstr "Desligar Sessão"
 
-#: template.php:219
+#: template.php:245
 msgid "Root Folder"
 msgstr "Pasta Raíz"
 
-#: template.php:262 template.php:277 template.php:587
+#: template.php:288 template.php:303 template.php:616
 msgid "Collapse"
 msgstr "Colapsar"
 
-#: template.php:263 template.php:588
+#: template.php:289 template.php:617
 msgid "Expand"
 msgstr "Expandir"
 
-#: template.php:270
+#: template.php:296
 msgid "Folder Navigation"
 msgstr "Navegação de Pastas"
 
-#: template.php:273
+#: template.php:299
 msgid "folders"
 msgstr "pastas"
 
-#: template.php:308
+#: template.php:334
 msgid "Open folder"
 msgstr "Abrir pasta"
 
-#: template.php:343
+#: template.php:369
 msgid "Search files..."
 msgstr "Pesquisar Ficheiros…"
 
-#: template.php:353
+#: template.php:379
 msgid "All Categories"
 msgstr "Todas as Categorias"
 
-#: template.php:371
+#: template.php:397
 msgid "per page"
 msgstr "por página"
 
-#: template.php:383
+#: template.php:409
 msgid "Apply"
 msgstr "Aplicar"
 
-#: template.php:394
+#: template.php:420
 msgid "Select all files"
 msgstr "Seleccionar todos os ficheiros"
 
-#: template.php:395
+#: template.php:421
 msgid "Select all"
 msgstr "Selecionar tudo"
 
-#: template.php:404
+#: template.php:425
+#, php-format
+msgid "%s of %s items selected for download."
+msgstr "%s of %s itens selecionados para descarregar."
+
+#: template.php:430
 msgid "Download zipped"
 msgstr "Descarregar arquivado em zip"
 
-#: template.php:456
+#: template.php:482
 msgid "Select file"
 msgstr "Selecionar ficheiro"
 
-#: template.php:464
+#: template.php:490
 msgid "Expired"
 msgstr "Expirado"
 
-#: template.php:496
+#: template.php:522
 msgid "Pagination"
 msgstr "Paginação"
 
-#: template.php:558
+#: template.php:586 template.php:593
 msgid "No files found"
 msgstr "Ficheiros não encontrados"
 
-#: template.php:559
+#: template.php:587
 msgid "There are no files matching your criteria."
 msgstr "Não há ficheiros que correspondam à sua pesquisa."
 
-#: template.php:564
+#: template.php:590
 msgid "Clear search"
 msgstr "Apagar pesquisa"
+
+#: template.php:594
+msgid "There are no files in this folder assigned to you."
+msgstr "Não existem ficheiros nesta pasta atribuídos a si."
