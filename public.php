@@ -264,7 +264,7 @@ $site_title = get_option('this_install_title');
                     $extension = !empty($file->extension) ? strtolower($file->extension) : '';
                     $file_size = !empty($file->size_formatted) ? $file->size_formatted : '';
                     $upload_date = !empty($file->uploaded_date) ? format_date($file->uploaded_date) : '';
-                    $download_url = !empty($file->download_link) ? $file->download_link : BASE_URI . 'process.php?do=download&file_id=' . $file->id;
+                    $download_url = !(empty($file->public_url)) ? $file->public_url . '&download' : BASE_URI . "download.php?id=" . $file->id - "&token=" . $file->public_token;
                     $expired_class = $file->expired ? 'opacity-50' : '';
                 ?>
                     <div class="file-card group flex flex-col overflow-hidden rounded-2xl border border-cream-200/80 bg-white shadow-sm shadow-cream-200/30 transition-all duration-200 hover:-translate-y-0.5 hover:border-brand/30 hover:shadow-md lg:flex-row <?php echo $expired_class; ?>"

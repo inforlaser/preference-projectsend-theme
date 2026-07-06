@@ -33,8 +33,6 @@ if (isset($_GET['search']) && !empty(trim($_GET['search']))) {
 
 include_once ROOT_DIR . '/templates/common.php'; // include the required functions for this template
 
-// Generate CSRF token
-$csrf_token = getCsrfToken();
 $site_title = get_option('this_install_title');
 $count = count($my_files);
 
@@ -45,6 +43,7 @@ $count = count($my_files);
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer-when-downgrade">
     <title><?php echo html_output($window_title . ' &raquo; ' . $site_title); ?></title>
     <?php meta_favicon(); ?>
 
@@ -79,10 +78,10 @@ $count = count($my_files);
                 <!-- Logo -->
                 <a href="<?php echo $base_uri; ?>" class="shrink-0 rounded-full p-1 transition hover:bg-cream-50">
                     <?php if ($logo_file_info && $logo_file_info['exists']) { ?>
-                        <img src="<?php echo $logo_file_info['url']; ?>" alt="<?php echo 'adsda'; ?>"
+                        <img src="<?php echo $logo_file_info['url']; ?>" alt="<?php echo html_output($site_title); ?>"
                         class="h-8 w-auto max-w-32 object-contain sm:h-24 sm:max-w-[16rem]" />
                     <?php } else { ?>
-                        <span class="text-xl font-bold text-brand sm:text-2xl"><?php echo 'asdas'; ?></span>
+                        <span class="text-xl font-bold text-brand sm:text-2xl"><?php echo html_output($site_title); ?></span>
                     <?php } ?>
                 </a>
 
@@ -612,7 +611,6 @@ $count = count($my_files);
     </footer>
 
     <script>
-        window.csrf_token = '<?php echo $csrf_token; ?>';
         window.folderAccordionTexts = {
             collapse: '<?php echo _e('Collapse', 'preference_template'); ?>',
             expand: '<?php echo _e('Expand', 'preference_template'); ?>'

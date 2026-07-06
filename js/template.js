@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function setCookie(name, value, days) {
         const date = new Date();
         date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        document.cookie = `${name}=${encodeURIComponent(value)};expires=${date.toUTCString()};path=/`;
+        document.cookie = `${name}=${encodeURIComponent(value)};expires=${date.toUTCString()};path=/;SameSite=Lax${location.protocol === 'https:' ? ';Secure' : ''}`;
     }
 
     function getCookie(name) {

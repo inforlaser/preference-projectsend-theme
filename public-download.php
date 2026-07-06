@@ -22,11 +22,9 @@ if (!$can_view) {
 
 $window_title = __('Download file','preference_template');
 
-define('TEMPLATE_THUMBNAILS_WIDTH', '300');
-define('TEMPLATE_THUMBNAILS_HEIGHT', '300');
+define('TEMPLATE_THUMBNAILS_WIDTH', '3840');
+define('TEMPLATE_THUMBNAILS_HEIGHT', '2160');
 
-// Generate CSRF token
-$csrf_token = getCsrfToken();
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo LOADED_LANG; ?>">
@@ -217,16 +215,28 @@ $csrf_token = getCsrfToken();
                 <!-- File Content -->
                 <div class="px-6 py-8 sm:px-8 sm:py-10">
                     <!-- File Preview Image -->
-                    <?php if ($file->isImage() && !empty($file->full_path) && file_exists($file->full_path)) { ?>
-                        <div class="mb-8 overflow-hidden rounded-2xl border border-cream-200/80 bg-cream-50/70">
+                    <?php if ($file->isImage() && !empty($file->full_path) && file_exists($file->full_path)) {
+                        $thumbnail = make_thumbnail($file->full_path, 'proportional', TEMPLATE_THUMBNAILS_WIDTH, TEMPLATE_THUMBNAILS_HEIGHT);
+                    ?>
+                        <div class="mb-8 min-w-0 overflow-hidden rounded-2xl border border-cream-200/80 bg-cream-50/70">
                             <div class="relative">
                                 <span class="absolute right-3 top-3 z-10 rounded-full bg-black/60 px-2.5 py-1 text-xs font-semibold uppercase tracking-wider text-white backdrop-blur-sm">
                                     <?php _e('Preview', 'preference_template'); ?>
                                 </span>
-                                <img src="<?php echo $file->download_link; ?>"
-                                    alt="<?php echo html_output($file->title); ?>"
-                                    class="w-full border-b border-cream-200/80 object-contain"
-                                    style="max-height: 480px; max-width: 100%; height: auto;" />
+                                <?php if (!empty($thumbnail['thumbnail']['url'])) { ?>
+                                    <img src="<?php echo $thumbnail['thumbnail']['url']; ?>"
+                                        alt="<?php echo html_output($file->title); ?>"
+                                        class="w-full border-b border-cream-200/80 object-contain"
+                                        style="max-height: 240px; max-width: 100%; height: auto;" />
+                                <?php } else { ?>
+                                    <div class="flex items-center justify-center py-16 text-slate-400">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                            stroke="currentColor" class="h-12 w-12">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0 0 22.5 18.75V5.25A2.25 2.25 0 0 0 20.25 3H3.75A2.25 2.25 0 0 0 1.5 5.25v13.5A2.25 2.25 0 0 0 3.75 21Z" />
+                                        </svg>
+                                    </div>
+                                <?php } ?>
                             </div>
                         </div>
                     <?php } ?>
@@ -245,16 +255,16 @@ $csrf_token = getCsrfToken();
 
                     <!-- File Details Grid -->
                     <div class="grid gap-5 sm:grid-cols-2">
-                        <div class="rounded-2xl border border-cream-200/80 bg-cream-50/70 p-5">
+                        <div class="min-w-0 rounded-2xl border border-cream-200/80 bg-cream-50/70 p-5">
                             <dt class="text-xs font-semibold uppercase tracking-wider text-slate-500">
                                 <?php _e('File name', 'preference_template'); ?>
                             </dt>
-                            <dd class="mt-1.5 truncate text-sm font-medium text-slate-800" title="<?php echo html_output($file->filename_original); ?>">
+                            <dd class="mt-1.5 break-words text-sm font-medium leading-snug text-slate-800" title="<?php echo html_output($file->filename_original); ?>">
                                 <?php echo html_output($file->filename_original); ?>
                             </dd>
                         </div>
 
-                        <div class="rounded-2xl border border-cream-200/80 bg-cream-50/70 p-5">
+                        <div class="min-w-0 rounded-2xl border border-cream-200/80 bg-cream-50/70 p-5">
                             <dt class="text-xs font-semibold uppercase tracking-wider text-slate-500">
                                 <?php _e('File size', 'preference_template'); ?>
                             </dt>
@@ -263,7 +273,7 @@ $csrf_token = getCsrfToken();
                             </dd>
                         </div>
 
-                        <div class="rounded-2xl border border-cream-200/80 bg-cream-50/70 p-5">
+                        <div class="min-w-0 rounded-2xl border border-cream-200/80 bg-cream-50/70 p-5">
                             <dt class="text-xs font-semibold uppercase tracking-wider text-slate-500">
                                 <?php _e('File type', 'preference_template'); ?>
                             </dt>
@@ -272,7 +282,7 @@ $csrf_token = getCsrfToken();
                             </dd>
                         </div>
 
-                        <div class="rounded-2xl border border-cream-200/80 bg-cream-50/70 p-5">
+                        <div class="min-w-0 rounded-2xl border border-cream-200/80 bg-cream-50/70 p-5">
                             <dt class="text-xs font-semibold uppercase tracking-wider text-slate-500">
                                 <?php _e('Upload date', 'preference_template'); ?>
                             </dt>
@@ -285,12 +295,12 @@ $csrf_token = getCsrfToken();
                             $dimensions = $file->getDimensions();
                             if (!empty($dimensions['width'])) {
                         ?>
-                                <div class="rounded-2xl border border-cream-200/80 bg-cream-50/70 p-5">
+                                <div class="min-w-0 rounded-2xl border border-cream-200/80 bg-cream-50/70 p-5">
                                     <dt class="text-xs font-semibold uppercase tracking-wider text-slate-500">
                                         <?php _e('Dimensions', 'preference_template'); ?>
                                     </dt>
                                     <dd class="mt-1.5 text-sm font-medium text-slate-800">
-                                        <?php echo $dimensions['width']; ?> × <?php echo $dimensions['height']; ?> px
+                                        <?php echo $dimensions['width']; ?> &times; <?php echo $dimensions['height']; ?> px
                                     </dd>
                                 </div>
                         <?php
@@ -324,7 +334,7 @@ $csrf_token = getCsrfToken();
                 <div class="border-t border-cream-200/80 bg-cream-50/70 px-6 py-5 sm:px-8 sm:py-6">
                     <div class="flex flex-wrap items-center justify-end gap-3">
                         <?php if ($can_download) { ?>
-                            <a href="<?php echo $file->download_link; ?>"
+                            <a href="<?php echo $file->public_url . '&download'; ?>"
                                 class="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-wider text-white shadow-sm shadow-brand/20 transition-colors hover:bg-brand-dark">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
                                     <path fill-rule="evenodd" d="M12 2.25a.75.75 0 0 1 .75.75v11.69l3.22-3.22a.75.75 0 1 1 1.06 1.06l-4.5 4.5a.75.75 0 0 1-1.06 0l-4.5-4.5a.75.75 0 1 1 1.06-1.06l3.22 3.22V3a.75.75 0 0 1 .75-.75Zm-9 13.5a.75.75 0 0 1 .75.75v3.75a3 3 0 0 0 3 3h13.5a3 3 0 0 0 3-3V16.5a.75.75 0 0 1 1.5 0v3.75a4.5 4.5 0 0 1-4.5 4.5H6.75a4.5 4.5 0 0 1-4.5-4.5V16.5a.75.75 0 0 1 .75-.75Z" clip-rule="evenodd" />
@@ -390,10 +400,6 @@ $csrf_token = getCsrfToken();
             </div>
         </div>
     </footer>
-
-    <script>
-        window.csrf_token = '<?php echo $csrf_token; ?>';
-    </script>
 </body>
 
 </html>
