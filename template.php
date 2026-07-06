@@ -23,6 +23,7 @@ define('TEMPLATE_THUMBNAILS_HEIGHT', '120');
 
 $filter_by_category = (isset($_GET['category']) && $_GET['category'] !== '') ? $_GET['category'] : null;
 
+$window_title = __('Files Repository','preference_template');
 $current_url = get_form_action_with_existing_parameters('index.php');
 
 // When searching, don't limit to current folder - search globally
@@ -44,7 +45,7 @@ $count = count($my_files);
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo html_output($site_title); ?></title>
+    <title><?php echo html_output($window_title . ' &raquo; ' . $site_title); ?></title>
     <?php meta_favicon(); ?>
 
     <!-- Inter Font -->
@@ -461,9 +462,9 @@ $count = count($my_files);
                          aria-label="<?php echo html_output($file->title ? $file->title : $file->filename_original); ?>">
                         <div class="file-thumb flex w-full shrink-0 items-center justify-center bg-cream-50/70 p-3 lg:w-32">
                             <?php if ($file->isImage() && !empty($file->full_path) && file_exists($file->full_path)) {
-                                $thumbnail = make_thumbnail($file->full_path, 'proportional', TEMPLATE_THUMBNAILS_WIDTH, TEMPLATE_THUMBNAILS_HEIGHT);
+                                $thumbnail = make_thumbnail($file->full_path, 'thumbnail', TEMPLATE_THUMBNAILS_WIDTH, TEMPLATE_THUMBNAILS_HEIGHT);
                             ?>
-                                <img src="<?php echo $thumbnail['thumbnail']['url']; ?>" alt="<?php echo html_output($file->title); ?>" class="h-24 w-24 rounded-lg object-cover" />
+                                <img src="<?php echo $thumbnail['thumbnail']['url']; ?>" alt="<?php echo html_output($file->title); ?>" class="max-h-24 max-w-24 rounded-lg object-contain" />
                             <?php } else { ?>
                                 <div class="flex h-24 w-24 items-center justify-center rounded-xl bg-white text-sm font-bold uppercase text-slate-600 shadow-sm ring-1 ring-cream-200">
                                     <?php echo htmlspecialchars(substr($extension, 0, 4)); ?>
