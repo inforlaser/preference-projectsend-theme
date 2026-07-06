@@ -23,7 +23,7 @@ define('TEMPLATE_THUMBNAILS_HEIGHT', '120');
 
 $filter_by_category = (isset($_GET['category']) && $_GET['category'] !== '') ? $_GET['category'] : null;
 
-$window_title = __('Files Repository','preference_template');
+$window_title = __('Files Repository', 'preference_template');
 $current_url = get_form_action_with_existing_parameters('index.php');
 
 // When searching, don't limit to current folder - search globally
@@ -72,16 +72,18 @@ $count = count($my_files);
     <?php render_custom_assets('body_top'); ?>
 
     <!-- Top Navigation Bar -->
-    <nav class="sticky top-0 z-50 border-b border-cream-200/70 bg-white/90 backdrop-blur-sm shadow-sm shadow-cream-200/40">
+    <nav
+        class="sticky top-0 z-50 border-b border-cream-200/70 bg-white/90 backdrop-blur-sm shadow-sm shadow-cream-200/40">
         <div class="mx-auto max-w-360 px-4 py-3.5">
             <div class="flex items-center justify-between gap-3">
                 <!-- Logo -->
                 <a href="<?php echo $base_uri; ?>" class="shrink-0 rounded-full p-1 transition hover:bg-cream-50">
                     <?php if ($logo_file_info && $logo_file_info['exists']) { ?>
                         <img src="<?php echo $logo_file_info['url']; ?>" alt="<?php echo html_output($site_title); ?>"
-                        class="h-8 w-auto max-w-32 object-contain sm:h-24 sm:max-w-[16rem]" />
+                            class="h-8 w-auto max-w-32 object-contain sm:h-24 sm:max-w-[16rem]" />
                     <?php } else { ?>
-                        <span class="text-xl font-bold text-brand sm:text-2xl"><?php echo html_output($site_title); ?></span>
+                        <span
+                            class="text-xl font-bold text-brand sm:text-2xl"><?php echo html_output($site_title); ?></span>
                     <?php } ?>
                 </a>
 
@@ -156,7 +158,8 @@ $count = count($my_files);
                                     d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
                                     clip-rule="evenodd" />
                             </svg>
-                            <span class="hidden text-gray-700 font-medium sm:inline"><?php echo html_output(CURRENT_USER_NAME); ?></span>
+                            <span
+                                class="hidden text-gray-700 font-medium sm:inline"><?php echo html_output(CURRENT_USER_NAME); ?></span>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                                 class="hidden h-6 w-6 text-gray-400 sm:block">
                                 <path fill-rule="evenodd"
@@ -207,7 +210,8 @@ $count = count($my_files);
     <!-- Breadcrumb Navigation -->
     <?php if (!empty($_GET['folder_id'])): ?>
         <div class="mx-auto w-full max-w-360 px-4 py-4 sm:px-6">
-            <div class="flex flex-wrap items-center gap-2 rounded-2xl border border-cream-200/80 bg-white/80 px-4 py-3 text-sm shadow-sm shadow-cream-200/40">
+            <div
+                class="flex flex-wrap items-center gap-2 rounded-2xl border border-cream-200/80 bg-white/80 px-4 py-3 text-sm shadow-sm shadow-cream-200/40">
                 <?php
                 // Build full breadcrumb path
                 $breadcrumbs = [];
@@ -284,8 +288,7 @@ $count = count($my_files);
     <main class="mx-auto flex-1 w-full max-w-360 px-4 py-3 sm:px-6 sm:py-4">
         <?php if (!empty($folders)): ?>
             <div class="mb-6 folder-accordion rounded-3xl border border-cream-200 bg-white shadow-sm shadow-cream-200/40"
-                id="folder-accordion"
-                data-collapse-text="<?php echo _e('Collapse', 'preference_template'); ?>"
+                id="folder-accordion" data-collapse-text="<?php echo _e('Collapse', 'preference_template'); ?>"
                 data-expand-text="<?php echo _e('Expand', 'preference_template'); ?>">
 
                 <button type="button"
@@ -296,19 +299,22 @@ $count = count($my_files);
                             <?php _e('Folder Navigation', 'preference_template'); ?>
                         </h2>
                         <span class="rounded-full bg-cream-100 px-3 py-1 text-xs font-medium text-slate-500">
-                            <?php echo count($folders); ?> <?php _e('folders', 'preference_template'); ?>
+                            <?php echo count($folders); ?>     <?php _e('folders', 'preference_template'); ?>
                         </span>
                     </div>
                     <div class="flex items-center gap-2">
-                        <span class="folder-accordion-toggle-text text-xs font-medium text-slate-500"><?php _e('Collapse', 'preference_template'); ?></span>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                        <span
+                            class="folder-accordion-toggle-text text-xs font-medium text-slate-500"><?php _e('Collapse', 'preference_template'); ?></span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                            stroke="currentColor"
                             class="folder-accordion-caret h-4 w-4 text-slate-400 transition-transform duration-200 rotate-180">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                         </svg>
                     </div>
                 </button>
 
-                <div id="folder-accordion-content" class="folder-accordion-content overflow-hidden transition-all duration-300 border-t border-cream-200">
+                <div id="folder-accordion-content"
+                    class="folder-accordion-content overflow-hidden transition-all duration-300 border-t border-cream-200">
                     <div class="p-5">
                         <div class="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
                             <?php
@@ -319,15 +325,17 @@ $count = count($my_files);
                                 $link = modify_url_with_parameters($current_url, ['folder_id' => $folder_data['id']], ['folder_id']); ?>
                                 <a href="<?php echo $link; ?>"
                                     class="group flex w-full min-w-0 items-start gap-3 rounded-2xl border border-cream-200 bg-cream-50/70 p-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-brand/30 hover:bg-white hover:shadow-md">
-                                    <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white text-brand shadow-sm ring-1 ring-cream-200 group-hover:bg-brand group-hover:text-white">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.6"
-                                            stroke="currentColor" class="h-5 w-5">
+                                    <div
+                                        class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white text-brand shadow-sm ring-1 ring-cream-200 group-hover:bg-brand group-hover:text-white">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.6" stroke="currentColor" class="h-5 w-5">
                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                 d="M2.25 12.75V12A2.25 2.25 0 0 1 4.5 9.75h15A2.25 2.25 0 0 1 21.75 12v.75m-8.69-6.44-2.12-2.12a1.5 1.5 0 0 0-1.061-.44H4.5A2.25 2.25 0 0 0 2.25 6v12a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25h-5.379a1.5 1.5 0 0 1-1.06-.44Z" />
                                         </svg>
                                     </div>
                                     <div class="min-w-0 flex-1">
-                                        <div class="line-clamp-2 break-words text-sm font-semibold leading-snug text-slate-700 group-hover:text-brand sm:line-clamp-1">
+                                        <div
+                                            class="line-clamp-2 break-words text-sm font-semibold leading-snug text-slate-700 group-hover:text-brand sm:line-clamp-1">
                                             <?php echo html_output($folder->name); ?>
                                         </div>
                                         <div class="mt-1 text-xs text-slate-400">
@@ -393,7 +401,10 @@ $count = count($my_files);
                             <?php
                             $current_per_page = isset($_GET['per_page']) ? (int) $_GET['per_page'] : TEMPLATE_RESULTS_PER_PAGE;
                             foreach ([5, 10, 15, 20, 25, 50, 100] as $value): ?>
-                                <option value="<?php echo $value; ?>" <?php echo ($current_per_page == $value) ? 'selected' : ''; ?>>
+                                <option 
+                                    value="<?php echo $value; ?>" 
+                                    <?php echo ($current_per_page == $value) ? 'selected' : ''; ?>
+                                >
                                     <?php echo $value . ' ' . __('per page', 'preference_template'); ?>
                                 </option>
                             <?php endforeach; ?>
@@ -403,7 +414,8 @@ $count = count($my_files);
                     <!-- Search Button -->
                     <button type="submit"
                         class="inline-flex items-center justify-center gap-2 px-6 py-2 bg-brand hover:bg-brand-dark text-white rounded-lg font-medium transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand/30 focus:ring-offset-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor" class="h-4 w-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.75"
+                            stroke="currentColor" class="h-4 w-4">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                         </svg>
                         <?php _e('Apply', 'preference_template'); ?>
@@ -416,16 +428,23 @@ $count = count($my_files);
         <div class="selection-bar mb-6 flex flex-col gap-3 rounded-2xl border border-cream-200 bg-white px-4 py-3 shadow-sm shadow-cream-200/40 sm:flex-row sm:items-center sm:justify-between sm:px-5"
             id="selection-bar">
             <div class="flex items-center gap-3">
-                <label for="select-all" class="flex cursor-pointer items-center gap-2 text-sm font-medium text-slate-600">
-                    <input type="checkbox" id="select-all" class="custom-checkbox accent-brand" aria-label="<?php echo _e('Select all files', 'preference_template'); ?>" />
+                <label for="select-all"
+                    class="flex cursor-pointer items-center gap-2 text-sm font-medium text-slate-600">
+                    <input type="checkbox" id="select-all" class="custom-checkbox accent-brand"
+                        aria-label="<?php echo _e('Select all files', 'preference_template'); ?>" />
                     <span><?php echo _e('Select all', 'preference_template'); ?></span>
                 </label>
             </div>
             <div class="flex flex-wrap items-center gap-3">
-                <span id="selection-summary" class="text-xs text-slate-400 sm:mr-1" data-total="<?php echo count($available_files ?? []); ?>" data-text-template="<?php echo html_output(__('%s of %s items selected for download.', 'preference_template')); ?>"><?php echo sprintf(__('%s of %s items selected for download.', 'preference_template'), '0', count($available_files ?? [])); ?></span>
-                <a href="#" id="zip_download" class="zip-button inline-flex items-center gap-2 rounded-lg border border-cream-200 bg-white px-4 py-2 text-slate-700 transition disabled:pointer-events-none disabled:opacity-50">
+                <span id="selection-summary" class="text-xs text-slate-400 sm:mr-1"
+                    data-total="<?php echo count($available_files ?? []); ?>"
+                    data-text-template="<?php echo html_output(__('%s of %s items selected for download.', 'preference_template')); ?>"><?php echo sprintf(__('%s of %s items selected for download.', 'preference_template'), '0', count($available_files ?? [])); ?></span>
+                <a href="#" id="zip_download"
+                    class="zip-button inline-flex items-center gap-2 rounded-lg border border-cream-200 bg-white px-4 py-2 text-slate-700 transition disabled:pointer-events-none disabled:opacity-50">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4">
-                        <path fill-rule="evenodd" d="M12 2.25a.75.75 0 0 1 .75.75v11.69l3.22-3.22a.75.75 0 1 1 1.06 1.06l-4.5 4.5a.75.75 0 0 1-1.06 0l-4.5-4.5a.75.75 0 1 1 1.06-1.06l3.22 3.22V3a.75.75 0 0 1 .75-.75Zm-9 13.5a.75.75 0 0 1 .75.75v3.75a3 3 0 0 0 3 3h13.5a3 3 0 0 0 3-3V16.5a.75.75 0 0 1 1.5 0v3.75a4.5 4.5 0 0 1-4.5 4.5H6.75a4.5 4.5 0 0 1-4.5-4.5V16.5a.75.75 0 0 1 .75-.75Z" clip-rule="evenodd" />
+                        <path fill-rule="evenodd"
+                            d="M12 2.25a.75.75 0 0 1 .75.75v11.69l3.22-3.22a.75.75 0 1 1 1.06 1.06l-4.5 4.5a.75.75 0 0 1-1.06 0l-4.5-4.5a.75.75 0 1 1 1.06-1.06l3.22 3.22V3a.75.75 0 0 1 .75-.75Zm-9 13.5a.75.75 0 0 1 .75.75v3.75a3 3 0 0 0 3 3h13.5a3 3 0 0 0 3-3V16.5a.75.75 0 0 1 1.5 0v3.75a4.5 4.5 0 0 1-4.5 4.5H6.75a4.5 4.5 0 0 1-4.5-4.5V16.5a.75.75 0 0 1 .75-.75Z"
+                            clip-rule="evenodd" />
                     </svg>
                     <?php echo _e('Download zipped', 'preference_template'); ?>
                 </a>
@@ -434,15 +453,15 @@ $count = count($my_files);
 
         <!-- Files List -->
         <?php
-            // Ensure we have an available files list and pagination count
-            if (!isset($available_files)) {
-                $available_files = isset($my_files) ? $my_files : [];
-            }
-            if (!isset($count_for_pagination)) {
-                $count_for_pagination = isset($count) ? $count : count($available_files);
-            }
+        // Ensure we have an available files list and pagination count
+        if (!isset($available_files)) {
+            $available_files = isset($my_files) ? $my_files : [];
+        }
+        if (!isset($count_for_pagination)) {
+            $count_for_pagination = isset($count) ? $count : count($available_files);
+        }
 
-            if (isset($count) && $count > 0) { ?>
+        if (isset($count) && $count > 0) { ?>
             <div class="space-y-3">
                 <?php foreach ($available_files as $file_id) {
                     $file = new ProjectSend\Classes\Files($file_id);
@@ -453,33 +472,33 @@ $count = count($my_files);
                     $upload_date = !empty($file->uploaded_date) ? date(get_option('timeformat'), strtotime($file->uploaded_date)) : '';
                     $download_url = !empty($file->download_link) ? $file->download_link : BASE_URI . 'process.php?do=download&file_id=' . $file->id;
                     $expired_class = $file->expired ? 'opacity-50' : '';
-                ?>
+                    ?>
                     <div class="file-card group flex flex-col overflow-hidden rounded-2xl border border-cream-200/80 bg-white shadow-sm shadow-cream-200/30 transition-all duration-200 hover:-translate-y-0.5 hover:border-brand/30 hover:shadow-md lg:flex-row <?php echo $expired_class; ?>"
-                         data-file-id="<?php echo $file->id; ?>"
-                         role="button"
-                         tabindex="0"
-                         aria-label="<?php echo html_output($file->title ? $file->title : $file->filename_original); ?>">
+                        data-file-id="<?php echo $file->id; ?>" role="button" tabindex="0"
+                        aria-label="<?php echo html_output($file->title ? $file->title : $file->filename_original); ?>">
                         <div class="file-thumb flex w-full shrink-0 items-center justify-center bg-cream-50/70 p-3 lg:w-32">
                             <?php if ($file->isImage() && !empty($file->full_path) && file_exists($file->full_path)) {
                                 $thumbnail = make_thumbnail($file->full_path, 'thumbnail', TEMPLATE_THUMBNAILS_WIDTH, TEMPLATE_THUMBNAILS_HEIGHT);
-                            ?>
-                                <img src="<?php echo $thumbnail['thumbnail']['url']; ?>" alt="<?php echo html_output($file->title); ?>" class="max-h-24 max-w-24 rounded-lg object-contain" />
+                                ?>
+                                <img src="<?php echo $thumbnail['thumbnail']['url']; ?>"
+                                    alt="<?php echo html_output($file->title); ?>"
+                                    class="max-h-24 max-w-24 rounded-lg object-contain" />
                             <?php } else { ?>
-                                <div class="flex h-24 w-24 items-center justify-center rounded-xl bg-white text-sm font-bold uppercase text-slate-600 shadow-sm ring-1 ring-cream-200">
+                                <div
+                                    class="flex h-24 w-24 items-center justify-center rounded-xl bg-white text-sm font-bold uppercase text-slate-600 shadow-sm ring-1 ring-cream-200">
                                     <?php echo htmlspecialchars(substr($extension, 0, 4)); ?>
                                 </div>
                             <?php } ?>
                         </div>
 
-                        <div class="flex flex-1 flex-col justify-between gap-4 px-4 py-4 sm:px-6 sm:py-5 lg:flex-wrap lg:items-start lg:gap-6">
+                        <div
+                            class="flex flex-1 flex-col justify-between gap-4 px-4 py-4 sm:px-6 sm:py-5 lg:flex-wrap lg:items-start lg:gap-6">
                             <div class="min-w-0 flex-1 self-stretch">
                                 <div class="flex items-start gap-3">
                                     <div class="mt-0.5 flex shrink-0 items-center justify-center self-start">
-                                        <input type="checkbox"
-                                               class="file-checkbox custom-checkbox"
-                                               value="<?php echo $file->id; ?>"
-                                               data-size="<?php echo (int) $file->size; ?>"
-                                               aria-label="<?php echo _e('Select file', 'preference_template'); ?>" />
+                                        <input type="checkbox" class="file-checkbox custom-checkbox"
+                                            value="<?php echo $file->id; ?>" data-size="<?php echo (int) $file->size; ?>"
+                                            aria-label="<?php echo _e('Select file', 'preference_template'); ?>" />
                                     </div>
                                     <div class="min-w-0 flex-1">
                                         <h3 class="mb-1 break-words text-base font-semibold leading-6 text-slate-800">
@@ -487,7 +506,8 @@ $count = count($my_files);
                                         </h3>
                                         <div class="flex flex-wrap items-center gap-2 text-xs text-slate-500">
                                             <?php if ($file->expired) { ?>
-                                                <span class="rounded-md bg-red-100 px-2 py-1 text-xs font-medium text-red-600"><?php echo _e('Expired', 'preference_template'); ?></span>
+                                                <span
+                                                    class="rounded-md bg-red-100 px-2 py-1 text-xs font-medium text-red-600"><?php echo _e('Expired', 'preference_template'); ?></span>
                                             <?php } ?>
                                             <span><?php echo $file_size; ?></span>
                                             <span class="text-slate-300">•</span>
@@ -504,9 +524,12 @@ $count = count($my_files);
 
                             <div class="shrink-0 lg:ml-auto">
                                 <a href="<?php echo $download_url; ?>" target="_blank"
-                                   class="download-action inline-flex flex-wrap items-center justify-center gap-2 rounded-full bg-brand px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-white shadow-sm shadow-brand/20 transition-colors hover:bg-brand-dark">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4">
-                                        <path fill-rule="evenodd" d="M12 2.25a.75.75 0 0 1 .75.75v11.69l3.22-3.22a.75.75 0 1 1 1.06 1.06l-4.5 4.5a.75.75 0 0 1-1.06 0l-4.5-4.5a.75.75 0 1 1 1.06-1.06l3.22 3.22V3a.75.75 0 0 1 .75-.75Zm-9 13.5a.75.75 0 0 1 .75.75v3.75a3 3 0 0 0 3 3h13.5a3 3 0 0 0 3-3V16.5a.75.75 0 0 1 1.5 0v3.75a4.5 4.5 0 0 1-4.5 4.5H6.75a4.5 4.5 0 0 1-4.5-4.5V16.5a.75.75 0 0 1 .75-.75Z" clip-rule="evenodd" />
+                                    class="download-action inline-flex flex-wrap items-center justify-center gap-2 rounded-full bg-brand px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-white shadow-sm shadow-brand/20 transition-colors hover:bg-brand-dark">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                        class="h-4 w-4">
+                                        <path fill-rule="evenodd"
+                                            d="M12 2.25a.75.75 0 0 1 .75.75v11.69l3.22-3.22a.75.75 0 1 1 1.06 1.06l-4.5 4.5a.75.75 0 0 1-1.06 0l-4.5-4.5a.75.75 0 1 1 1.06-1.06l3.22 3.22V3a.75.75 0 0 1 .75-.75Zm-9 13.5a.75.75 0 0 1 .75.75v3.75a3 3 0 0 0 3 3h13.5a3 3 0 0 0 3-3V16.5a.75.75 0 0 1 1.5 0v3.75a4.5 4.5 0 0 1-4.5 4.5H6.75a4.5 4.5 0 0 1-4.5-4.5V16.5a.75.75 0 0 1 .75-.75Z"
+                                            clip-rule="evenodd" />
                                     </svg>
                                     <?php echo _e('Download', 'preference_template'); ?>
                                 </a>
@@ -524,12 +547,16 @@ $count = count($my_files);
                         $pagination_page = (isset($_GET["page"]) && is_numeric($_GET["page"])) ? $_GET["page"] : 1;
                         $pages = ceil($count_for_pagination / TEMPLATE_RESULTS_PER_PAGE);
                         $query_string = '';
-                        
-                        if (isset($_GET['search'])) $query_string .= '&search=' . urlencode($_GET['search']);
-                        if (isset($_GET['category']) && $_GET['category'] !== '') $query_string .= '&category=' . $_GET['category'];
-                        if (isset($_GET['per_page'])) $query_string .= '&per_page=' . $_GET['per_page'];
-                        if (isset($_GET['folder_id'])) $query_string .= '&folder_id=' . $_GET['folder_id'];
-                        
+
+                        if (isset($_GET['search']))
+                            $query_string .= '&search=' . urlencode($_GET['search']);
+                        if (isset($_GET['category']) && $_GET['category'] !== '')
+                            $query_string .= '&category=' . $_GET['category'];
+                        if (isset($_GET['per_page']))
+                            $query_string .= '&per_page=' . $_GET['per_page'];
+                        if (isset($_GET['folder_id']))
+                            $query_string .= '&folder_id=' . $_GET['folder_id'];
+
                         // Previous button
                         if ($pagination_page > 1) {
                             $prev = $pagination_page - 1;
@@ -537,16 +564,17 @@ $count = count($my_files);
                             echo '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path fill-rule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l5.23-5.23a.75.75 0 0 1 1.06 1.06L9.31 12l4.7 4.7a.75.75 0 1 1-1.06 1.06l-5.23-5.23Z" clip-rule="evenodd"/></svg>';
                             echo '</a>';
                         }
-                        
+
                         // Page numbers
                         $start_page = max(1, $pagination_page - 2);
                         $end_page = min($pages, $pagination_page + 2);
-                        
+
                         if ($start_page > 1) {
                             echo '<a href="?page=1' . $query_string . '" class="pagination-link w-10 h-10 flex items-center justify-center text-sm rounded-xl bg-white text-gray-500 hover:text-brand hover:bg-cream-50 transition-colors shadow-sm">1</a>';
-                            if ($start_page > 2) echo '<span class="text-gray-300 px-1">...</span>';
+                            if ($start_page > 2)
+                                echo '<span class="text-gray-300 px-1">...</span>';
                         }
-                        
+
                         for ($i = $start_page; $i <= $end_page; $i++) {
                             $active = ($i == $pagination_page) ? 'bg-brand text-white shadow-sm shadow-brand/20' : 'bg-white text-gray-500 hover:text-brand hover:bg-cream-50';
                             if ($i == $pagination_page) {
@@ -555,12 +583,13 @@ $count = count($my_files);
                                 echo '<a href="?page=' . $i . $query_string . '" class="pagination-link w-10 h-10 flex items-center justify-center text-sm rounded-xl ' . $active . ' transition-colors shadow-sm">' . $i . '</a>';
                             }
                         }
-                        
+
                         if ($end_page < $pages) {
-                            if ($end_page < $pages - 1) echo '<span class="text-gray-300 px-1">...</span>';
+                            if ($end_page < $pages - 1)
+                                echo '<span class="text-gray-300 px-1">...</span>';
                             echo '<a href="?page=' . $pages . $query_string . '" class="pagination-link w-10 h-10 flex items-center justify-center text-sm rounded-xl bg-white text-gray-500 hover:text-brand hover:bg-cream-50 transition-colors shadow-sm">' . $pages . '</a>';
                         }
-                        
+
                         // Next button
                         if ($pagination_page < $pages) {
                             $next = $pagination_page + 1;
@@ -577,22 +606,29 @@ $count = count($my_files);
             <!-- No Files Message -->
             <div class="no-files-state flex flex-col items-center justify-center py-20 rounded-3xl">
                 <div class="w-20 h-20 bg-cream-100 rounded-full flex items-center justify-center mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 0 0 5.636 5.636m12.728 12.728A9 9 0 0 1 5.636 5.636m12.728 12.728L5.636 5.636" />
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M18.364 18.364A9 9 0 0 0 5.636 5.636m12.728 12.728A9 9 0 0 1 5.636 5.636m12.728 12.728L5.636 5.636" />
                     </svg>
                 </div>
                 <?php $search_query = isset($_GET['search']) ? trim((string) $_GET['search']) : ''; ?>
                 <?php if ($search_query !== '') { ?>
-                    <h3 class="text-lg font-medium text-gray-400 mb-1"><?php echo _e('No files found', 'preference_template'); ?></h3>
-                    <p class="text-sm text-gray-300"><?php echo _e('There are no files matching your criteria.', 'preference_template'); ?></p>
+                    <h3 class="text-lg font-medium text-gray-400 mb-1">
+                        <?php echo _e('No files found', 'preference_template'); ?></h3>
+                    <p class="text-sm text-gray-300">
+                        <?php echo _e('There are no files matching your criteria.', 'preference_template'); ?></p>
                     <a href="<?php echo modify_url_with_parameters($current_url, [], ['search', 'page']); ?>"
-                       class="mt-4 px-6 py-2.5 bg-brand hover:bg-brand-dark text-white text-sm font-medium rounded-full transition-colors">
+                        class="mt-4 px-6 py-2.5 bg-brand hover:bg-brand-dark text-white text-sm font-medium rounded-full transition-colors">
                         <?php echo _e('Clear search', 'preference_template'); ?>
                     </a>
                 <?php } else { ?>
-                    <h3 class="text-lg font-medium text-gray-400 mb-1"><?php echo _e('No files found', 'preference_template'); ?></h3>
-                    <p class="text-sm text-gray-300"><?php echo _e('There are no files in this folder assigned to you.', 'preference_template'); ?></p>
-                <?php }; ?>
+                    <h3 class="text-lg font-medium text-gray-400 mb-1">
+                        <?php echo _e('No files found', 'preference_template'); ?></h3>
+                    <p class="text-sm text-gray-300">
+                        <?php echo _e('There are no files in this folder assigned to you.', 'preference_template'); ?></p>
+                <?php }
+                ; ?>
             </div>
         <?php } ?>
 
