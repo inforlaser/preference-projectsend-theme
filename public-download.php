@@ -9,8 +9,9 @@ Description: Custom theme for Preference Porto.
 */
 $ld = 'preference_template'; // specify the language domain for this template
 
-// Get template and branding information
+// Load template translations (bootstrap only loads the admin domain)
 $this_template = get_option('selected_clients_template');
+template_load_translation($this_template);
 $this_template_url = BASE_URI . 'templates/' . $this_template . '/';
 $logo_file_info = generate_logo_url();
 $site_title = get_option('this_install_title');

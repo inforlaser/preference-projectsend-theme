@@ -9,6 +9,10 @@ Description: Custom theme for Preference Porto.
 */
 $ld = 'preference_template'; // specify the language domain for this template
 
+// Load template translations (bootstrap only loads the admin domain)
+$this_template = get_option('selected_clients_template');
+template_load_translation($this_template);
+
 // Use the global pagination setting from admin area
 define('TEMPLATE_RESULTS_PER_PAGE', get_option('pagination_results_per_page'));
 
@@ -34,7 +38,6 @@ $groups = get_groups([
 ]);
 
 // Get template and branding information
-$this_template = get_option('selected_clients_template');
 $this_template_url = BASE_URI . 'templates/' . $this_template . '/';
 $logo_file_info = generate_logo_url();
 

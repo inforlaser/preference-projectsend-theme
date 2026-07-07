@@ -23,7 +23,6 @@ define('TEMPLATE_THUMBNAILS_HEIGHT', '120');
 
 $filter_by_category = (isset($_GET['category']) && $_GET['category'] !== '') ? $_GET['category'] : null;
 
-$window_title = __('Files Repository', 'preference_template');
 $current_url = get_form_action_with_existing_parameters('index.php');
 
 // When searching, don't limit to current folder - search globally
@@ -33,6 +32,8 @@ if (isset($_GET['search']) && !empty(trim($_GET['search']))) {
 
 include_once ROOT_DIR . '/templates/common.php'; // include the required functions for this template
 
+// Must be AFTER common.php so template_load_translation() has loaded the .mo file
+$window_title = __('Files Repository', 'preference_template');
 $site_title = get_option('this_install_title');
 $count = count($my_files);
 
