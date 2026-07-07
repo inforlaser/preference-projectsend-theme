@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Projectsend theme: Preference\n"
-"POT-Creation-Date: 2026-07-03 18:27+0100\n"
+"POT-Creation-Date: 2026-07-07 19:01+0100\n"
 "PO-Revision-Date: 2016-09-14 15:51-0300\n"
 "Last-Translator: \n"
 "Language-Team: ProjectSend <contact@projectsend.org>\n"
@@ -22,217 +22,209 @@ msgstr ""
 msgid "Download file"
 msgstr ""
 
-
-#: public-download.php:111 public.php:113
-msgid "Login"
-msgstr ""
-
-
-#: public-download.php:179
-msgid "File name"
-msgstr ""
-
-#: public-download.php:183
-msgid "File size"
-msgstr ""
-
-#: public-download.php:187
-msgid "File type"
-msgstr ""
-
-#: public-download.php:191
-msgid "Upload date"
-msgstr ""
-
-#: public-download.php:192 public.php:182
-msgid "Unknown"
-msgstr ""
-
-#: public-download.php:198
-msgid "Description"
-msgstr ""
-
-#: public-download.php:208
-msgid "Dimensions"
-msgstr ""
-
-#: public-download.php:217
-msgid "Expiration date"
-msgstr ""
-
-#: public-download.php:228 public.php:206 template.php:511
-msgid "Download"
-msgstr ""
-
-#: public-download.php:233
-msgid "Preview"
-msgstr ""
-
-#: public-download.php:239
-msgid "This file is not available for download."
-msgstr ""
-
-#: public-download.php:249
-msgid "Access denied or file not found."
-msgstr ""
-
-
-#: public.php:16
-msgid "Your search keywords returned no results."
-msgstr ""
-
-#: public.php:18
-msgid "There are no files available."
-msgstr ""
-
-#: public.php:31
-msgid "Available files"
-msgstr ""
-
-
-
-
-
-
-
-#: public.php:215
-msgid "File expired"
-msgstr ""
-
-#: template.php:99
+#: public-download.php:89 public.php:111 template.php:106
 msgid "Language"
 msgstr ""
 
-#: template.php:174
-msgid "Signed in as"
-msgstr ""
-
-#: template.php:187
-msgid "My Account"
-msgstr ""
-
-#: template.php:197
-msgid "Logout"
-msgstr ""
-
-#: template.php:245
-msgid "Root Folder"
-msgstr ""
-
-#: template.php:288 template.php:303 template.php:616
-msgid "Collapse"
-msgstr ""
-
-#: template.php:289 template.php:617
-msgid "Expand"
-msgstr ""
-
-#: template.php:296
-msgid "Folder Navigation"
-msgstr ""
-
-#: template.php:299
-msgid "folders"
-msgstr ""
-
-#: template.php:334
-msgid "Open folder"
-msgstr ""
-
-#: template.php:369
-msgid "Search files..."
-msgstr ""
-
-#: template.php:379
-msgid "All Categories"
-msgstr ""
-
-#: template.php:397
-msgid "per page"
-msgstr ""
-
-#: template.php:409
-msgid "Apply"
-msgstr ""
-
-#: template.php:420
-msgid "Select all files"
-msgstr ""
-
-#: template.php:421
-msgid "Select all"
-msgstr ""
-
-#: template.php:425
-#, php-format
-msgid "%s of %s items selected for download."
-msgstr ""
-
-#: template.php:430
-msgid "Download zipped"
-msgstr ""
-
-#: template.php:482
-msgid "Select file"
-msgstr ""
-
-#: template.php:490
-msgid "Expired"
-msgstr ""
-
-#: template.php:522
-msgid "Pagination"
-msgstr ""
-
-#: template.php:586 template.php:593
-msgid "No files found"
-msgstr ""
-
-#: template.php:587
-msgid "There are no files matching your criteria."
-msgstr ""
-
-#: template.php:590
-msgid "Clear search"
-msgstr ""
-
-#: template.php:594
-msgid "There are no files in this folder assigned to you."
-msgstr ""
-
-#: template.php:26
-msgid "Files Repository"
+#: public-download.php:148 public.php:171
+msgid "Login"
 msgstr ""
 
 #: public-download.php:163
 msgid "File Details"
 msgstr ""
 
+#: public-download.php:224
+msgid "Preview"
+msgstr ""
+
+#: public-download.php:248
+msgid "Description"
+msgstr ""
+
+#: public-download.php:260
+msgid "File name"
+msgstr ""
+
+#: public-download.php:269
+msgid "File size"
+msgstr ""
+
+#: public-download.php:278
+msgid "File type"
+msgstr ""
+
+#: public-download.php:287
+msgid "Upload date"
+msgstr ""
+
+#: public-download.php:290
+msgid "Unknown"
+msgstr ""
+
+#: public-download.php:300
+msgid "Dimensions"
+msgstr ""
+
+#: public-download.php:322
+msgid "Expiration date"
+msgstr ""
+
+#: public-download.php:342 public.php:350 template.php:539
+msgid "Download"
+msgstr ""
+
+#: public-download.php:353
+msgid "This file is not available for download."
+msgstr ""
+
 #: public-download.php:373
 msgid "Access Denied"
+msgstr ""
+
+#: public-download.php:376
+msgid "Access denied or file not found."
 msgstr ""
 
 #: public-download.php:384
 msgid "Return to Home"
 msgstr ""
 
-#: public.php:335
-msgid "View Details"
+#: public.php:26
+msgid "Your search keywords returned no results."
 msgstr ""
 
-#: public.php:183
-msgid "files published for direct access."
+#: public.php:28
+msgid "There are no files available."
 msgstr ""
 
-#: template.php:66
+#: public.php:41
+msgid "Available files"
+msgstr ""
+
+#: public.php:69 template.php:65
 msgid "Preparing download…"
 msgstr ""
 
-#: template.php:67
+#: public.php:70 template.php:66
+#, php-format
 msgid "Selected %s file%s totaling %s."
 msgstr ""
 
-#: template.php:68
+#: public.php:71 template.php:67
+#, php-format
 msgid "This may take up to %s minute%s."
 msgstr ""
 
+#: public.php:188
+msgid "files published for direct access."
+msgstr ""
+
+#: public.php:211 template.php:382
+msgid "Search files..."
+msgstr ""
+
+#: public.php:221 template.php:392
+msgid "All Categories"
+msgstr ""
+
+#: public.php:238 template.php:426
+msgid "Apply"
+msgstr ""
+
+#: public.php:258 public.php:266 template.php:623 template.php:632
+msgid "No files found"
+msgstr ""
+
+#: public.php:262 template.php:628
+msgid "Clear search"
+msgstr ""
+
+#: public.php:312 template.php:515
+msgid "Expired"
+msgstr ""
+
+#: public.php:340
+msgid "View Details"
+msgstr ""
+
+#: public.php:356
+msgid "File expired"
+msgstr ""
+
+#: public.php:370 template.php:550
+msgid "Pagination"
+msgstr ""
+
+#: public.php:443 template.php:296 template.php:312 template.php:656
+msgid "Collapse"
+msgstr ""
+
+#: public.php:444 template.php:297 template.php:657
+msgid "Expand"
+msgstr ""
+
+#: template.php:26
+msgid "Files Repository"
+msgstr ""
+
+#: template.php:182
+msgid "Signed in as"
+msgstr ""
+
+#: template.php:195
+msgid "My Account"
+msgstr ""
+
+#: template.php:205
+msgid "Logout"
+msgstr ""
+
+#: template.php:254
+msgid "Root Folder"
+msgstr ""
+
+#: template.php:304
+msgid "Folder Navigation"
+msgstr ""
+
+#: template.php:307
+msgid "folders"
+msgstr ""
+
+#: template.php:347
+msgid "Open folder"
+msgstr ""
+
+#: template.php:413
+msgid "per page"
+msgstr ""
+
+#: template.php:439
+msgid "Select all files"
+msgstr ""
+
+#: template.php:440
+msgid "Select all"
+msgstr ""
+
+#: template.php:446
+#, php-format
+msgid "%s of %s items selected for download."
+msgstr ""
+
+#: template.php:454
+msgid "Download zipped"
+msgstr ""
+
+#: template.php:506
+msgid "Select file"
+msgstr ""
+
+#: template.php:625
+msgid "There are no files matching your criteria."
+msgstr ""
+
+#: template.php:634
+msgid "There are no files in this folder assigned to you."
+msgstr ""
