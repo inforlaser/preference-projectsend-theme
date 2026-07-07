@@ -3,10 +3,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Projectsend theme: Preference\n"
 "POT-Creation-Date: 2026-07-07 19:01+0100\n"
-"PO-Revision-Date: 2016-09-14 15:51-0300\n"
+"PO-Revision-Date: 2026-07-07 19:06+0100\n"
 "Last-Translator: \n"
 "Language-Team: ProjectSend <contact@projectsend.org>\n"
-"Language: en\n"
+"Language: pt_PT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,211 +20,211 @@ msgstr ""
 
 #: public-download.php:23
 msgid "Download file"
-msgstr ""
+msgstr "Descarregar Ficheiro"
 
 #: public-download.php:89 public.php:111 template.php:106
 msgid "Language"
-msgstr ""
+msgstr "Idioma"
 
 #: public-download.php:148 public.php:171
 msgid "Login"
-msgstr ""
+msgstr "Iniciar Sessão"
 
 #: public-download.php:163
 msgid "File Details"
-msgstr ""
+msgstr "Detalhes de Ficheiro"
 
 #: public-download.php:224
 msgid "Preview"
-msgstr ""
+msgstr "Pré-visualização"
 
 #: public-download.php:248
 msgid "Description"
-msgstr ""
+msgstr "Descrição"
 
 #: public-download.php:260
 msgid "File name"
-msgstr ""
+msgstr "Nome do Ficheiro"
 
 #: public-download.php:269
 msgid "File size"
-msgstr ""
+msgstr "Tamanho do Ficheiro"
 
 #: public-download.php:278
 msgid "File type"
-msgstr ""
+msgstr "Tipo de Ficheiro"
 
 #: public-download.php:287
 msgid "Upload date"
-msgstr ""
+msgstr "Data do Envio"
 
 #: public-download.php:290
 msgid "Unknown"
-msgstr ""
+msgstr "Desconhecido"
 
 #: public-download.php:300
 msgid "Dimensions"
-msgstr ""
+msgstr "Dimensões"
 
 #: public-download.php:322
 msgid "Expiration date"
-msgstr ""
+msgstr "Data de Expiração"
 
 #: public-download.php:342 public.php:350 template.php:539
 msgid "Download"
-msgstr ""
+msgstr "Descarregar"
 
 #: public-download.php:353
 msgid "This file is not available for download."
-msgstr ""
+msgstr "Este ficheiro não se encontra disponível para descarregar."
 
 #: public-download.php:373
 msgid "Access Denied"
-msgstr ""
+msgstr "Acesso Negado"
 
 #: public-download.php:376
 msgid "Access denied or file not found."
-msgstr ""
+msgstr "Acesso negado ou ficheiro não encontrado."
 
 #: public-download.php:384
 msgid "Return to Home"
-msgstr ""
+msgstr "Voltar à página inicial"
 
 #: public.php:26
 msgid "Your search keywords returned no results."
-msgstr ""
+msgstr "A sua pesquisa não teve resultados."
 
 #: public.php:28
 msgid "There are no files available."
-msgstr ""
+msgstr "Não existem ficheiros disponíveis."
 
 #: public.php:41
 msgid "Available files"
-msgstr ""
+msgstr "Ficheiros disponíveis"
 
 #: public.php:69 template.php:65
 msgid "Preparing download…"
-msgstr ""
+msgstr "A preparar a descarga…"
 
 #: public.php:70 template.php:66
 #, php-format
 msgid "Selected %s file%s totaling %s."
-msgstr ""
+msgstr "%s ficheiro%s seleccionados, num total de %s."
 
 #: public.php:71 template.php:67
 #, php-format
 msgid "This may take up to %s minute%s."
-msgstr ""
+msgstr "Isto poderá demorar até %s minuto%s."
 
 #: public.php:188
 msgid "files published for direct access."
-msgstr ""
+msgstr "ficheiros publicados para acesso direto."
 
 #: public.php:211 template.php:382
 msgid "Search files..."
-msgstr ""
+msgstr "Pesquisar Ficheiros…"
 
 #: public.php:221 template.php:392
 msgid "All Categories"
-msgstr ""
+msgstr "Todas as Categorias"
 
 #: public.php:238 template.php:426
 msgid "Apply"
-msgstr ""
+msgstr "Aplicar"
 
 #: public.php:258 public.php:266 template.php:623 template.php:632
 msgid "No files found"
-msgstr ""
+msgstr "Nenhum ficheiro encontrado"
 
 #: public.php:262 template.php:628
 msgid "Clear search"
-msgstr ""
+msgstr "Limpar pesquisa"
 
 #: public.php:312 template.php:515
 msgid "Expired"
-msgstr ""
+msgstr "Expirado"
 
 #: public.php:340
 msgid "View Details"
-msgstr ""
+msgstr "Ver detalhes"
 
 #: public.php:356
 msgid "File expired"
-msgstr ""
+msgstr "Ficheiro expirado"
 
 #: public.php:370 template.php:550
 msgid "Pagination"
-msgstr ""
+msgstr "Paginação"
 
 #: public.php:443 template.php:296 template.php:312 template.php:656
 msgid "Collapse"
-msgstr ""
+msgstr "Recolher"
 
 #: public.php:444 template.php:297 template.php:657
 msgid "Expand"
-msgstr ""
+msgstr "Expandir"
 
 #: template.php:26
 msgid "Files Repository"
-msgstr ""
+msgstr "Repositório de Ficheiros"
 
 #: template.php:182
 msgid "Signed in as"
-msgstr ""
+msgstr "Sessão iniciada como"
 
 #: template.php:195
 msgid "My Account"
-msgstr ""
+msgstr "Minha conta"
 
 #: template.php:205
 msgid "Logout"
-msgstr ""
+msgstr "Terminar Sessão"
 
 #: template.php:254
 msgid "Root Folder"
-msgstr ""
+msgstr "Pasta Raiz"
 
 #: template.php:304
 msgid "Folder Navigation"
-msgstr ""
+msgstr "Navegação de Pastas"
 
 #: template.php:307
 msgid "folders"
-msgstr ""
+msgstr "pastas"
 
 #: template.php:347
 msgid "Open folder"
-msgstr ""
+msgstr "Abrir pasta"
 
 #: template.php:413
 msgid "per page"
-msgstr ""
+msgstr "por página"
 
 #: template.php:439
 msgid "Select all files"
-msgstr ""
+msgstr "Seleccionar todos os ficheiros"
 
 #: template.php:440
 msgid "Select all"
-msgstr ""
+msgstr "Seleccionar tudo"
 
 #: template.php:446
 #, php-format
 msgid "%s of %s items selected for download."
-msgstr ""
+msgstr "%s de %s itens seleccionados para descarregar."
 
 #: template.php:454
 msgid "Download zipped"
-msgstr ""
+msgstr "Descarregar arquivado em zip"
 
 #: template.php:506
 msgid "Select file"
-msgstr ""
+msgstr "Seleccionar ficheiro"
 
 #: template.php:625
 msgid "There are no files matching your criteria."
-msgstr ""
+msgstr "Não há ficheiros que correspondam à sua pesquisa."
 
 #: template.php:634
 msgid "There are no files in this folder assigned to you."
-msgstr ""
+msgstr "Não existem ficheiros nesta pasta atribuídos a si."

@@ -1,0 +1,3 @@
+#!/bin/bash -ue
+
+npx tailwindcss -i css/main.css -o preference.min.css --watch
