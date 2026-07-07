@@ -134,6 +134,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function showDownloadOverlay(fileCount, totalSize, estimatedMs) {
         if (document.getElementById('ps-download-overlay')) return;
+        const texts = window.downloadOverlayTexts || {
+            preparing: 'Preparing download…',
+            selectedTemplate: 'Selected %s file%s totaling %s.',
+            timeTemplate: 'This may take up to %s minute%s.'
+        };
+        const preparingText = texts.preparing;
+        const selectedText = texts.selectedTemplate.replace('%s', fileCount).replace('%s', fileCount === 1 ? '' : 's').replace('%s', formatBytes(totalSize));
+        const minutes = Math.ceil(estimatedMs / 60000);
+        const timeText = texts.timeTemplate.replace('%s', minutes).replace('%s', minutes === 1 ? '' : 's');
         const overlay = document.createElement('div');
         overlay.id = 'ps-download-overlay';
         overlay.style.position = 'fixed';
@@ -145,12 +154,12 @@ document.addEventListener('DOMContentLoaded', function () {
         overlay.style.zIndex = '9999';
         overlay.innerHTML = `
             <div style="max-width:320px;padding:20px 24px;background:#fff;border-radius:12px;text-align:center;color:#111;line-height:1.5;">
-                <div style="font-weight:700;margin-bottom:10px;">Preparing download…</div>
+                <div style="font-weight:700;margin-bottom:10px;">${preparingText}</div>
                 <div style="font-size:0.95rem;color:#4b5563;">
-                    Selected ${fileCount} file${fileCount === 1 ? '' : 's'} totaling ${formatBytes(totalSize)}.
+                    ${selectedText}
                 </div>
                 <div style="margin-top:10px;font-size:0.9rem;color:#6b7280;">
-                    This may take up to ${Math.ceil(estimatedMs / 60000)} minute${Math.ceil(estimatedMs / 60000) === 1 ? '' : 's'}.
+                    ${timeText}
                 </div>
             </div>
         `;

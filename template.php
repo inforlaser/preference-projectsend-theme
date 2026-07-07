@@ -61,6 +61,11 @@ $count = count($my_files);
     <link rel="stylesheet" media="all" type="text/css" href="<?php echo $this_template_url; ?>preference.min.css" />
     <script>
         window.base_url = '<?php echo BASE_URI; ?>';
+        window.downloadOverlayTexts = {
+            preparing: '<?php echo addslashes(__('Preparing download…', 'preference_template')); ?>',
+            selectedTemplate: '<?php echo addslashes(__('Selected %s file%s totaling %s.', 'preference_template')); ?>',
+            timeTemplate: '<?php echo addslashes(__('This may take up to %s minute%s.', 'preference_template')); ?>'
+        };
     </script>
 
     <?php render_custom_assets('head'); ?>

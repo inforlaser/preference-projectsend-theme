@@ -22,17 +22,11 @@ msgstr ""
 msgid "Download file"
 msgstr ""
 
-#: public-download.php:105
-msgid "File Download"
-msgstr ""
 
 #: public-download.php:111 public.php:113
 msgid "Login"
 msgstr ""
 
-#: public-download.php:129
-msgid "Back"
-msgstr ""
 
 #: public-download.php:179
 msgid "File name"
@@ -82,9 +76,6 @@ msgstr ""
 msgid "Access denied or file not found."
 msgstr ""
 
-#: public-download.php:263
-msgid "File Preview"
-msgstr ""
 
 #: public.php:16
 msgid "Your search keywords returned no results."
@@ -98,29 +89,11 @@ msgstr ""
 msgid "Available files"
 msgstr ""
 
-#: public.php:75
-msgid "Public file access"
-msgstr ""
 
-#: public.php:81
-msgid "Search..."
-msgstr ""
 
-#: public.php:91
-msgid "Categories"
-msgstr ""
 
-#: public.php:93
-msgid "All files"
-msgstr ""
 
-#: public.php:197
-msgid "Expires"
-msgstr ""
 
-#: public.php:209
-msgid "View"
-msgstr ""
 
 #: public.php:215
 msgid "File expired"
@@ -226,3 +199,40 @@ msgstr ""
 #: template.php:594
 msgid "There are no files in this folder assigned to you."
 msgstr ""
+
+#: template.php:26
+msgid "Files Repository"
+msgstr ""
+
+#: public-download.php:163
+msgid "File Details"
+msgstr ""
+
+#: public-download.php:373
+msgid "Access Denied"
+msgstr ""
+
+#: public-download.php:384
+msgid "Return to Home"
+msgstr ""
+
+#: public.php:335
+msgid "View Details"
+msgstr ""
+
+#: public.php:183
+msgid "files published for direct access."
+msgstr ""
+
+#: template.php:66
+msgid "Preparing download…"
+msgstr ""
+
+#: template.php:67
+msgid "Selected %s file%s totaling %s."
+msgstr ""
+
+#: template.php:68
+msgid "This may take up to %s minute%s."
+msgstr ""
+

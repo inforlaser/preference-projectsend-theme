@@ -22,17 +22,11 @@ msgstr ""
 msgid "Download file"
 msgstr "Descarregar Ficheiro"
 
-#: public-download.php:105
-msgid "File Download"
-msgstr "Descarregar Ficheiro"
 
 #: public-download.php:111 public.php:113
 msgid "Login"
 msgstr "Iniciar Sessão"
 
-#: public-download.php:129
-msgid "Back"
-msgstr "Retroceder"
 
 #: public-download.php:179
 msgid "File name"
@@ -82,9 +76,6 @@ msgstr "Este ficheiro não se encontra disponível para descarregar."
 msgid "Access denied or file not found."
 msgstr "Acesso não autorizado ou ficheiro não encontrado."
 
-#: public-download.php:263
-msgid "File Preview"
-msgstr "Pré-visualização de Ficheiro"
 
 #: public.php:16
 msgid "Your search keywords returned no results."
@@ -98,29 +89,11 @@ msgstr "Não existem ficheiros disponíveis."
 msgid "Available files"
 msgstr "Ficheiros disponíveis"
 
-#: public.php:75
-msgid "Public file access"
-msgstr "Acesso publico de ficheiro"
 
-#: public.php:81
-msgid "Search..."
-msgstr "Pesquisar…"
 
-#: public.php:91
-msgid "Categories"
-msgstr "Categorias"
 
-#: public.php:93
-msgid "All files"
-msgstr "Todos os ficheiros"
 
-#: public.php:197
-msgid "Expires"
-msgstr "Expira"
 
-#: public.php:209
-msgid "View"
-msgstr "Ver"
 
 #: public.php:215
 msgid "File expired"
@@ -128,11 +101,11 @@ msgstr "Ficheiro expirado"
 
 #: template.php:99
 msgid "Language"
-msgstr "Linguagem"
+msgstr "Idioma"
 
 #: template.php:174
 msgid "Signed in as"
-msgstr "Ligado como"
+msgstr "Sessão iniciada como"
 
 #: template.php:187
 msgid "My Account"
@@ -148,7 +121,7 @@ msgstr "Pasta Raíz"
 
 #: template.php:288 template.php:303 template.php:616
 msgid "Collapse"
-msgstr "Colapsar"
+msgstr "Recolher"
 
 #: template.php:289 template.php:617
 msgid "Expand"
@@ -193,7 +166,7 @@ msgstr "Selecionar tudo"
 #: template.php:425
 #, php-format
 msgid "%s of %s items selected for download."
-msgstr "%s of %s itens selecionados para descarregar."
+msgstr "%s de %s itens selecionados para descarregar."
 
 #: template.php:430
 msgid "Download zipped"
@@ -226,3 +199,40 @@ msgstr "Apagar pesquisa"
 #: template.php:594
 msgid "There are no files in this folder assigned to you."
 msgstr "Não existem ficheiros nesta pasta atribuídos a si."
+
+#: template.php:26
+msgid "Files Repository"
+msgstr ""
+
+#: public-download.php:163
+msgid "File Details"
+msgstr ""
+
+#: public-download.php:373
+msgid "Access Denied"
+msgstr ""
+
+#: public-download.php:384
+msgid "Return to Home"
+msgstr ""
+
+#: public.php:335
+msgid "View Details"
+msgstr ""
+
+#: public.php:183
+msgid "files published for direct access."
+msgstr ""
+
+#: template.php:66
+msgid "Preparing download…"
+msgstr ""
+
+#: template.php:67
+msgid "Selected %s file%s totaling %s."
+msgstr ""
+
+#: template.php:68
+msgid "This may take up to %s minute%s."
+msgstr ""
+
