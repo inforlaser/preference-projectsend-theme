@@ -154,7 +154,7 @@ define('TEMPLATE_THUMBNAILS_HEIGHT', '2160');
     </nav>
 
     <!-- Main Content -->
-    <main class="mx-auto flex-1 w-full max-w-360 px-4 py-8 sm:px-6 sm:py-12">
+    <main class="mx-auto flex-1 w-full max-w-360 px-4 py-3 sm:px-6 sm:py-4">
         <!-- Page Intro -->
         <div class="mb-8 text-center">
             <span class="inline-block rounded-full bg-cream-100 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-slate-500">
